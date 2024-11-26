@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICSEAI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+      @keyframes slideShow {
+        0% {
+          opacity: 1;
+        }
+        33% {
+          opacity: 1;
+        }
+        33.33% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+
+      .tab button:hover {
+        background-color: #ddd;
+      }
+
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+      }
+
+      .map-container {
+        height: 100%;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev,
+      .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active,
+      .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {
+          font-size: 11px;
+        }
+      }
+      .hover-zoom {
+        display: inline-block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hover-zoom:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-black text-justify">
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" />
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-blue-900 text-white px-2 py-1 rounded">ICSEAI</span>
+            2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="text-blue-400">Home</a></li>
+          <li class="relative group">
+            <a
+              href="callforPapers.html"
+              class="flex items-center hover:text-blue-400"
+            >
+              Call for Papers
+              <svg
+                class="ml-1 w-4 h-4 fill-current text-black group-hover:text-blue-600"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+            <ul
+              class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible"
+            >
+              <li>
+                <a
+                  href="callforPapers.html#conf"
+                  class="block px-4 py-2 hover:bg-blue-100"
+                  >About ICSEAI</a
+                >
+              </li>
+              <li>
+                <a
+                  href="callforPapers.html#dates"
+                  class="block px-4 py-2 hover:bg-blue-100"
+                  >Important Dates</a
+                >
+              </li>
+              <li>
+                <a
+                  href="callforPapers.html#scope"
+                  class="block px-4 py-2 hover:bg-blue-100"
+                  >Scope</a
+                >
+              </li>
+              <li>
+                <a
+                  href="callforPapers.html#conf-tracks"
+                  class="block px-4 py-2 hover:bg-blue-100"
+                  >Conference Tracks</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="indexing.html" class="hover:text-blue-400">Indexing</a>
+          </li>
+          <li>
+            <a href="committees.html" class="hover:text-blue-400">Committees</a>
+          </li>
+          <li>
+            <a href="registration.html" class="hover:text-blue-400"
+              >Registration</a
+            >
+          </li>
+          <li>
+            <a href="sponsors.html" class="hover:text-blue-400">Sponsors</a>
+          </li>
+          <li>
+            <a href="specialSessions.html" class="hover:text-blue-400"
+              >Special Sessions</a
+            >
+          </li>
+          <li>
+            <a href="contactus.html" class="hover:text-blue-400">Contact</a>
+          </li>
+        </ul>
+        <button
+          class="md:hidden text-blue-400 focus:outline-none"
+          id="menu-button"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <ul
+        class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden"
+        id="mobile-menu"
+      >
+        <li><a href="index.html" class="text-blue-400">Home</a></li>
+        <li>
+          <a
+            href="callforPapers.html"
+            class="flex items-center hover:text-blue-400"
+          >
+            Call for Papers
+            <svg
+              class="ml-1 w-4 h-4 fill-current text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li>
+              <a href="callforPapers.html#conf" class="text-blue-400"
+                >About ICSEAI</a
+              >
+            </li>
+            <li>
+              <a href="callforPapers.html#dates-m" class="text-blue-400"
+                >Important Dates</a
+              >
+            </li>
+            <li>
+              <a href="callforPapers.html#scope" class="text-blue-400">Scope</a>
+            </li>
+            <li>
+              <a href="callforPapers.html#conf-tracks" class="text-blue-400"
+                >Conference Tracks</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="indexing.html" class="hover:text-blue-400">Indexing</a>
+        </li>
+        <li>
+          <a href="committees.html" class="hover:text-blue-400">Committees</a>
+        </li>
+        <li>
+          <a href="registration.html" class="hover:text-blue-400"
+            >Registration</a
+          >
+        </li>
+        <li>
+          <a href="sponsors.html" class="hover:text-blue-400">Sponsors</a>
+        </li>
+        <li>
+          <a href="specialSessions.html" class="hover:text-blue-400"
+            >Special Sessions</a
+          >
+        </li>
+        <li>
+          <a href="contactus.html" class="hover:text-blue-400">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+
+  <header class="h-[950px] md:h-full text-center text-white bg-blue-900 relative">
+    <div class="flex flex-col md:flex-row relative z-10">
+
+      <div class="w-full md:w-[39%] relative overflow-hidden">
+        <div class="slideshow">
+          <div
+            class="slide"
+            style="background-image: url('PSCMR.jpeg'); height: 750px"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('barrage.jpeg'); height: 750px"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('durga.jpeg'); height: 750px"
+          ></div>
+          <div class="slide">
+            <iframe
+              width="100%"
+              height="750px"
+              src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-[61%] md:px-4 py-25">
+        <div class="w-full">
+          <div class="slideshow-container md:hidden">
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 4</div>
+              <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 4</div>
+              <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 4</div>
+              <img src="durga.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">4 / 4</div>
+              <iframe
+                width="100%"
+                height="200px"
+                src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <div style="text-align: center" class="md:hidden">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+              <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="text-2xl font-bold t">
+          <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+          International Conference on <br> <span class="text-[28px]">Smart Eco-Systems using AI and Green Computing for Sustainable Development</span> <br> ICSEAI 2025
+        </h1>
+        <br />
+        <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+        <h2 class="text-xl font-bold mb-4">Hybrid Mode</h2>
+        <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+        <h3 class="text-lg mb-4">
+          ALL ACCEPTED & PRESENTED papers will be published in <br />
+          <b>SCOPUS indexed SPRINGER</b>
+        </h3>
+        <div class="flex justify-center space-x-4 mb-4">
+          <img src="springer.png" alt="Springer" class="h-20 w-20" />
+          <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
+        </div>
+        <p class="mb-2">Submission is now open: Till December 15, 2024</p>
+        <div class="button-container2"></div>
+        <button
+          class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+        >
+          Submit Your Paper
+        </button>
+      </div>
+      
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+    </script>
+  </header>
+
+    <div class="mt-1 bg">
+      <marquee behavior="" direction=""
+        >A virtual meeting is available for all registered authors who intend to
+        submit their work but are unable to attend the conference.</marquee
+      >
+    </div>
+
+    <section class="bg-white pt-[20px] md:pt-0 ">
+      <div class="md:flex mx-auto">
+        <div class="w-full md:w-1/2 bg-white p-5">
+          <h2 class="text-2xl text-left font-bold mb-4 underline-blue">
+            <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+            About the Conference
+          </h2>
+          <p>The International Conference on Smart Eco-Systems using AI and Green Computing for Sustainable Development (ICSEAI) 2025 is a premier event dedicated to the convergence of Artificial Intelligence (AI), Green Computing, and sustainable ecosystem management. The conference aims to foster collaboration and exchange of innovative ideas, cutting-edge research, and technological advancements that can contribute to building eco-efficient systems. By bringing together experts, practitioners, and researchers, ICSEAI 2025 will explore how AI and green computing can address global challenges, promote environmental sustainability, and facilitate the transition to a greener, more sustainable future.
+            <br>
+            The primary aim of ICSEAI 2025 is to highlight the role of AI and green computing in driving sustainable development. The conference will explore how these advanced technologies can optimize resource usage, reduce environmental impacts, and create smarter, more efficient ecosystems across various sectors, including energy, agriculture, manufacturing, and urban planning. By fostering interdisciplinary collaborations, the conference seeks to inspire innovative solutions that contribute to a sustainable world.
+
+          </p>
+        </div>
+
+        <div class="md:grid grid-cols-2 gap-4 p-2">
+          <!-- First Image -->
+          <div class="flex justify-center items-center">
+            <a href="https://www.pscmr.ac.in/" target="_blank">
+              <img src="logo.png" alt="pscmr-logo" class="w-full h-auto" style="max-width: 200px; height: 160px;" />
+            </a>
+          </div>
+          
+          <!-- Second Image -->
+          <div class="md:ml-[80px] flex justify-center items-center">
+            <a href="https://www.cardiffmet.ac.uk/Pages/default.aspx" target="_blank">
+              <img src="CardiffMet_logo-1.png" alt="cardiff-logo" class="h-auto" style="height: 160px;" />
+            </a>
+          </div>
+          
+          <!-- Third Image -->
+          <div class="flex justify-center items-center">
+            <a href="https://www.uvi.edu/index.html" target="_blank">
+              <img src="virginIslands.png" alt="virginIslands-logo" class="w-full h-auto" style="max-width: 200px; height: 160px;" />
+            </a>
+          </div>
+          
+          <!-- Fourth Image -->
+          <div class="md:ml-[80px] flex justify-center items-center">
+            <a href="http://www.ibu.edu.tr/Website/Default.aspx" target="_blank">
+              <img src="baibu.png" alt="baibu-logo" class="w-full h-auto" style="max-width: 200px; height: 160px;" />
+            </a>
+          </div>
+        </div>
+        
+
+      </div>
+    </section>
+
+    <section id="conference" class="mt-4 mb-4">
+      <div class="md:flex">
+        <div class="w-full md:w-1/2">
+          <h2 class="text-2xl text-center font-bold mb-4 underline-blue flex items-center justify-center">
+            <i class="fas fa-university mr-2 text-blue-700"></i>
+            About Institution
+          </h2>
+                    
+          <div
+            class="tab flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mb-4"
+          >
+            <button
+              class="tablinks btn mt-[20px] md:mt-0 font-bold text-white"
+              onclick="openTab(event, 'about-pscmr')"
+            >
+              About PSCMR
+            </button>
+            <button
+              class="tablinks btn font-bold text-white"
+              onclick="openTab(event, 'about-ds')"
+            >
+              About Data Science
+            </button>
+            <button
+              class="tablinks btn font-bold text-white"
+              onclick="openTab(event, 'about-mca')"
+            >
+              About MCA
+            </button>
+          </div>
+          <div id="about-pscmr" class="tabcontent">
+            <p>
+              Potti Sriramulu Chalavadi Mallikarjuna Rao College of Engineering and Technology (PSCMRCET) was started in the year 2008, under the aegis of, more than hundred years old, Sri Kanyaka Parameswari Vissamsetti Venkataratnam Hindu High Schools Committee (SKPVVHHSC – Established in 1906) , by a group of philanthropists belonging to Vijayawada. The college is permanently affiliated to   JNTUK Kakinada and is approved by AICTE, New Delhi. The institution is accredited with A+ + grade (3.68/4) by NAAC and the engineering programs are accredited by NBA.  The college offers B. Tech, MBA, MCA and M. Tech programs. Spread over a sprawling campus with aesthetically designed buildings, the college has become the source of inspiration for the students. PSCMRCET has become synonymous with ultra modern learning practices. <br> <br>
+              PSCMRCET aims to impart quality education supported by societal responsiveness fostering holistic development of its students. The mission of the college is to impart quality and value based technology and management education relevant to contemporary corporate and societal needs through continuous learning, societal responsiveness supported by strategic
+              <span class="dots">...</span>
+            </p>
+            <a href="about.html#about-pscmr"
+              ><button class="text-blue-900 font-bold">Read more</button></a
+            >
+          </div>
+          <div id="about-ds" class="tabcontent">
+            <p>
+              With the advent of IoT (Internet of Things) and Industry 4.0, the
+              volume of data is growing at an exponential rate. Given the
+              massive amount of data that is produced, it has led to the matured
+              discipline of Data Science that involves collection,
+              visualization, processing, and modeling of large and complex data
+              sets from different domains and sources. Data science is an
+              essential part of many industries today, and Its popularity has
+              grown over the years. Companies have started implementing data
+              science techniques to grow their business and increase customer
+              satisfaction. Its immense popularity has increased the demanding
+              interest among the students to choose it as a career option. Data
+              Science is an emerging area of Computer Science and Engineering
+              (CSE).The Department of CSE-Data Science was established in the
+              year 2022 with an annual intake of 60 students.
+              <span class="dots">...</span>
+            </p>
+            <a href="about.html#about-ds"
+              ><button class="text-blue-900 font-bold">Read more</button></a
+            >
+          </div>
+          <div id="about-mca" class="tabcontent">
+            <p>
+              Master of Computer Applications (MCA) is a two-year professional
+              post-graduate course for candidates wanting to delve deeper into
+              the world of Computer Application development with the help of
+              learning modern programming language. The programme is a blend of
+              both theoretical and practical knowledge proving in-depth
+              knowledge of the various computer languages and IT applications.
+              The Department has excellent learning facilities which include
+              Seminar Hall, Department Library and a dedicated Computer Lab.
+              Faculty members are given various opportunities to attend
+              workshops, short-term courses, seminars, and conferences for
+              updating knowledge, to cope with the continuous changes and
+              challenges in the field of Computer Science and its applications.
+              Why MCA in PSCMRCET? Hands-on Curriculum designed by experts from
+              academia and industry
+              <span class="dots">...</span>
+            </p>
+            <a href="about.html#about-mca"
+              ><button class="text-blue-900 font-bold">Read more</button></a
+            >
+          </div>
+        </div>
+
+        <div class="md:w-1/2 ml-[10px] hidden md:block ">
+          <h2 class="text-2xl text-center font-bold mb-4 underline-blue flex items-center justify-center">
+            <i class="fas fa-calendar-alt text-blue-500 mr-2"></i> 
+            Important Dates / Deadlines
+          </h2>          
+          <table
+            class="md:min-w-full bg-white shadow-md rounded-lg overflow-hidden"
+          >
+            <thead>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-center">
+                  Event
+                </th>
+                <th class="bg-blue-900 text-white px-6 py-4 text-center">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-gray-50">
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+                  Manuscript submissions open
+                </td>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+                  October 1, 2024
+                </td>
+              </tr>
+              <tr class="bg-white">
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+                  Deadline for submissions
+                </td>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+                  December 15, 2024
+                </td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+                  Under review timeline
+                </td>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+                  December 15, 2024 - January 31, 2025
+                </td>
+              </tr>
+              <tr class="bg-white">
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+                  Notification of acceptance
+                </td>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+                  February 05, 2025
+                </td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+                  Author registration deadline
+                </td>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+                  February 06th to March 07th, 2025
+                </td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+                  Conference Program scheduled
+                </td>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+                  March 20th, 21st, 2025
+                </td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+                  Final revised manuscript
+                </td>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+                  April 5th, 2025
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <style>
+            table,
+            th,
+            td {
+              border: 1px solid gray;
+            }
+          </style>
+        </div>
+
+        <div class="md:w-[600px] w-full mx-auto p-4 md:hidden">
+          <h2 class="text-2xl text-left font-bold mb-4 underline-blue">
+            Important Dates / Deadlines
+          </h2>
+
+          <!-- Table 1: Manuscript submissions open -->
+          <table class="w-full bg-white shadow-md rounded-lg mb-6">
+            <thead>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">
+                  Event
+                </th>
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+                  Manuscript submissions open
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4">
+                  October 1, 2024
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Table 2: Deadline for manuscript submissions -->
+          <table class="w-full bg-white shadow-md rounded-lg mb-6">
+            <thead>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">
+                  Event
+                </th>
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+                  Deadline for manuscript submissions
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4">
+                  December 15, 2024
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Table 3: Under review timeline -->
+          <table class="w-full bg-white shadow-md rounded-lg mb-6">
+            <thead>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">
+                  Event
+                </th>
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+                  Under review timeline
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4">
+                  December 15, 2024 - January 31, 2025
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Table 4: Notification of acceptance -->
+          <table class="w-full bg-white shadow-md rounded-lg mb-6">
+            <thead>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">
+                  Event
+                </th>
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+                  Notification of acceptance
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4">
+                  February 05, 2025
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Table 5: Author registration deadline -->
+          <table class="w-full bg-white shadow-md rounded-lg mb-6">
+            <thead>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">
+                  Event
+                </th>
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+                  Author registration deadline
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4">
+                  February 06th to March 07th, 2025
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Table 6: Conference program scheduled -->
+          <table class="w-full bg-white shadow-md rounded-lg mb-6">
+            <thead>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">
+                  Event
+                </th>
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+                  Conference program scheduled
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4">
+                  March 20th, 21st, 2025
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Table 7: Final revised manuscript -->
+          <table class="w-full bg-white shadow-md rounded-lg mb-6">
+            <thead>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">
+                  Event
+                </th>
+                <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+                  Final revised manuscript
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+                <td class="border-b border-gray-300 pl-8 px-6 py-4">
+                  April 5th, 2025
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div class="mt-10 flex flex-col lg:flex-row justify-between m-2 ">
+        <a href="callforPapers.html#conf"
+          ><button
+            class="bg-blue-900 p-3 w-full md:w-[180px] text-white rounded-lg md:ml-2 mt-[10px]"
+          >
+            About Conference
+          </button></a
+        >
+        <a href="callforPapers.html#objectives"
+          ><button
+            class="bg-blue-900 p-3 w-full md:w-[110px] text-white rounded-lg mt-[10px]"
+          >
+            Objectives
+          </button></a
+        >
+        <a href="callforPapers.html#outcomes"
+          ><button
+            class="bg-blue-900 p-3 w-full md:w-[110px] text-white rounded-lg mt-[10px]"
+          >
+            Outcomes
+          </button></a
+        >
+        <a href="callforPapers.html#scope"
+          ><button
+            class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg mt-[10px]"
+          >
+            Scope
+          </button></a
+        >
+        <a href="callforPapers.html#impact"
+          ><button
+            class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg mt-[10px]"
+          >
+            Impact
+          </button></a
+        >
+        <a href="specialSessions.html#conference-tracks"
+          ><button
+            class="bg-blue-900 p-3 w-full md:w-[180px] text-white rounded-lg mt-[10px]"
+          >
+            Conference Tracks
+          </button></a
+        >
+        <a href="#indexing"
+          ><button
+            class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg mt-[10px]"
+          >
+            Indexing
+          </button></a
+        >
+      </div>
+    </section>
+
+    <script>
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+      // Display the first tab by default
+      document.addEventListener("DOMContentLoaded", (event) => {
+        document.querySelector(".tab button").click();
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const readMoreButtons = document.querySelectorAll(".read-more-btn");
+        const allDots = document.querySelectorAll(".dots");
+        const allMoreTexts = document.querySelectorAll(".more");
+
+        // Hide all the extended content initially
+        allDots.forEach((dot) => (dot.style.display = "inline"));
+        allMoreTexts.forEach((moreText) => (moreText.style.display = "none"));
+
+        readMoreButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const parent = this.parentElement;
+            const dots = parent.querySelector(".dots");
+            const moreText = parent.querySelector(".more");
+            const btnText = this;
+
+            if (dots.style.display === "none") {
+              dots.style.display = "inline";
+              btnText.innerHTML = "Read more";
+              moreText.style.display = "none";
+            } else {
+              dots.style.display = "none";
+              btnText.innerHTML = "Read less";
+              moreText.style.display = "inline";
+            }
+          });
+        });
+      });
+    </script>
+
+    <div class="bg-white font-sans antialiased">
+      <section class="py-12">
+        <p class="m-2 md:m-5 text-center font-bold text-2xl underline-blue mb-3">
+          <i class="fas fa-microphone-alt text-blue-500 mr-2"></i>
+          KEYNOTE SPEAKERS
+        </p>
+        <div class="m-5">
+          <div class="grid grid-cols-1 md:flex justify-between mb-12 bg-gray-100 rounded p-3">
+            <div class="flex justify-center md:w-1/3">
+              <a
+                href="https://pure.cardiffmet.ac.uk/en/persons/elochukwu-ukwandu"
+              >
+                <img
+                  class="rounded-full shadow-lg w-[80%] ml-[20px] md:ml-0"
+                  src="ukwandu.jpg"
+                  alt="Description of image 1"
+                />
+              </a>
+            </div>
+            <div class="flex flex-col justify-center md:w-2/3 md:ml-10">
+              <h2 class="text-2xl font-bold text-gray-800 text-left">
+                Dr Elochukwu UKWANDU
+              </h2>
+              <p class="text-blue-900 font-bold mb-4">
+                Lecturer, Cardiff Schol of Technologies, Cardiff Metropolitan
+                University, Wales, United Kingdom
+              </p>
+              <p class="text-gray-600 mb-4">
+                A Lecturer in Computer Security and Head of Cryptography and
+                Innovation Research Group, Cyber Security and Information
+                Network Centre, Cardiff Schol of Technologies, Cardiff
+                Metropolitan University, Wales, United Kingdom. He is a PhD
+                graduate of Edinburgh Napier University from the School of
+                Computing specialising in cryptography, information and cyber
+                security in teaching, and learning, research, and development.
+                Above all, a UK Moonshot creator in transformative technologies;
+                Fellow of Higher Education Academy (FHEA); Member, IEEE; Member
+                of three Peer Review Colleges - EPSRC, British Council â€“ ISPF
+                and UKRI Talent Group. Elsevier has recognised him as a top Open
+                Access contributor (2020-2022) for having one of my articles
+                linked to the United Nations Sustainable Goals, helping to
+                tackle some of the world's greatest challenges. He founded and
+                Co-Ordinate an inter-disciplinary research group with academics
+                from more than eight different Universities in Nigeria and South
+                Africa as cohorts. The group focuses in solving machine
+                learning, social media, e-Learning, and cyber security
+                challenges with relevance to the African continent.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:flex justify-between mb-12 bg-gray-100 rounded p-3">
+            <div class="flex flex-col justify-center md:w-2/3 md:ml-10">
+              <h2 class="text-2xl font-bold text-gray-800 text-left">
+                Prof. Dr. Iyyanki V. Muralikrishna
+              </h2>
+              <h2 class="text-blue-900 font-bold mb-4">
+                Director, Academic Programs, Haas Institute for Business
+                Innovation, University of California Berkeley, USA
+              </h2>
+              <p class="text-gray-600 mb-4">
+                Prof. Dr. Iyyanki V. Muralikrishna, obtained his Ph.D from the
+                Premier Institute -Indian Institute of Science (IISc),
+                Bangalore, is presently Director, Academic Programs, Haas
+                Institute for Business Innovation, University of California
+                Berkeley, USA. He is a former Dr Raja Ramanna Distinguished
+                Fellow at the Defense Research and Development Organization
+                (DRDO), India, and He served as assistant professor in IIT
+                Madras (1976-1979), senior scientist and Head of the Marine
+                Applications Division, National Remote Sensing Agency, Indian
+                Space Research Organisation (1979-1987), Professor and Founder
+                Head of the Centre for Spatial Information Technology (CSIT) at
+                Jawaharlal Nehru Technological (JNT) University(1990-2008), and
+                Director of JNT University's Research and Development Centre
+                (2005-2008). The National Coordinator for Geospatial Public
+                Health, which is the National Networking Government of India
+                Project. He is Professor and Founder Head of the Centre for
+                Spatial Information Technology (CSIT) At Jawaharlal Nehru
+                Technological University (1990-2005), and Director of Research
+                and Development Centre (2005-2008).
+              </p>
+            </div>
+            <div class="md:ml-[100px] flex justify-between md:w-1/3">
+              <img
+                class="rounded-full shadow-lg w-[100%] md:w-[80%]"
+                src="ivv.jpg"
+                alt="Description of image 2"
+                height="100px"
+                width="100px"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:flex mb-12 bg-gray-100 rounded p-3">
+            <div class="flex justify-center md:w-1/3">
+              <img
+                class="rounded-full shadow-lg w-[80%]"
+                src="sukanya.jpg"
+                alt="Description of image 2"
+              />
+            </div>
+            <div class="flex flex-col justify-center md:w-2/3">
+              <h2 class="text-2xl font-bold text-gray-800 text-left">
+                Sukanya Konatam
+              </h2>
+              <h2 class="text-blue-900 font-bold mb-4">
+                Senior Manager of Enterprise Data Governance and Data Science,
+                Vialto Partners, Texas, USA
+              </h2>
+              <p class="text-gray-600 mb-4">
+                Mrs. Sukanya Konatam Senior Manager, Enterprise Data Governance
+                and Data Science with over 18 years of experience enabling
+                companies with digital transformation and helping them become
+                data driven organization. A highly regarded thought leader with
+                an exceptional background in data science, data governance, data
+                Architecture, data modeling, data analytics, data visualization,
+                automation, BI modernization. She has implemented data centric
+                solutions for several industries including banking & financials,
+                telecom, health care, automobile, criminal justice and many
+                more. Currently, Sukanya is leading Enterprise Data Governance
+                Modernization efforts at Vialto Partners with multiple teams of
+                data engineers, data scientists & analysts. With her proven
+                record of strategic thinking and Solutions Architecture Design,
+                she is particularly responsible to help create a 360-degree view
+                for the system, data security, master data management, enrich
+                data sets, build modern dashboards, automate manual data
+                processes. She defines indicators of performance and quality
+                metrics and ensures compliance with data, defines roles and
+                responsibilities related to data governance and ensures clear
+                accountability. She facilitates the development and
+                implementation of data quality standards, data protection
+                standards and adoption requirements across Vialto Partners.
+                Graduated with “Master’s in Computer Applications” from Andhra
+                University, INDIA, and “Postgraduation in Artificial
+                intelligence & Machine learning” from UT Austin, Texas, USA.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:flex mb-12 bg-gray-100 rounded p-3">
+            <div class="flex flex-col justify-center md:w-2/3 md:ml-10">
+              <h2 class="text-2xl font-bold text-gray-800 text-left">
+                Suryapraksh Nalluri
+              </h2>
+              <h2 class="text-blue-900 font-bold mb-4">
+                Senior Vice President - Information Security Operations Group
+                Manager, City Group, Texas, USA
+              </h2>
+              <p class="text-gray-600 mb-4">
+                As a distinguished Executive Leader in Cybersecurity, he has
+                achieved exceptional results over his 18-year career, with a
+                focused dedication to cybersecurity for the past decade. His
+                achievements are highlighted by his pioneering of comprehensive
+                security strategies, which have fortified organizations against
+                relentless cyber threats. He has championed DevSecOps practices,
+                ensuring security integration throughout the software
+                development lifecycle, and has adeptly led security
+                transformation initiatives, fostering adaptive security cultures
+                that evolve with emerging threats. His influence extends to
+                digital product strategies, where he has aligned technology
+                innovations with security requirements. Combining a background
+                in both development and design, his leadership in cybersecurity
+                is distinguished by a unique blend of technical acumen and
+                creative insights. He has spearheaded vulnerability assessments
+                and penetration testing (VAPT) for web, mobile, and APIs,
+                providing vital defenses against cyber threats. Additionally, he
+                has effectively managed and optimized resources within his
+                teams, ensuring cost-effective solutions, and has driven
+                innovation through research and development, conceptualizing
+                exploits and utilizing automation to enhance cybersecurity
+                operations.
+              </p>
+            </div>
+            <div class="md:ml-5 flex justify-center md:w-1/3">
+              <img
+                class="rounded-full shadow-lg h-30 w-[80%]"
+                src="sp.jpg"
+                alt="Description of image 2"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:flex mb-12 bg-gray-200 rounded p-3">
+            <div class="flex justify-center md:w-1/3">
+              <a href="https://nitkkr.ac.in/author/ghanapriyanitkkr-ac-in/">
+                <img
+                  class="rounded-full ml-[20px] md:ml-0 shadow-lg w-[80%]"
+                  src="rahul.jpg"
+                  alt="Description of image 2"
+                />
+              </a>
+            </div>
+            <div class="flex flex-col justify-center md:w-2/3 md:ml-10">
+              <h2 class="text-2xl font-bold text-gray-800 text-left">
+                Dr. Rahul Pandya
+              </h2>
+              <h2 class="text-blue-900 font-bold mb-4">
+                Assistant Professor in Department of EECE at Indian Institute of Technology, Dharwad, India
+              </h2>
+              <p class="text-gray-600 mb-4">
+                Dr. Rahul Pandya completed his M.Tech. in Electrical Engineering from the Indian Institute of Technology, Delhi, in 2010, and his Ph.D. from the Bharti School of Telecommunication at the same institute in 2014. He worked as a Senior Network Design Engineer in the Optical Networking Industry at Infinera Pvt. Ltd., Bangalore, from 2014 to 2018. From 2018 to 2020, he served as an Assistant Professor in the ECE Department at the National Institute of Technology, Warangal. Currently, he is a faculty member in the Electrical, Electronics, and Communication Engineering Department at the Indian Institute of Technology, Dharwad. He has also been a SIRE fellow and visiting scholar at Virginia Tech, USA.
+                His research areas include Wireless Communication, Optical Communication, Optical Networks, Computer Networks, Machine Learning, and Artificial Intelligence. He is involved in multiple projects, including SERB, SPARC, DoT-TTDF-6G, AICTE-ATAL, SGNF, and RSM.
+
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:flex mb-12 bg-gray-100 rounded p-3">
+            <div class="flex flex-col justify-center md:w-2/3 md:ml-10">
+              <h2 class="text-2xl font-bold text-gray-800 text-left">
+                Dr. Ghanapriya Singh
+              </h2>
+              <h2 class="text-blue-900 font-bold mb-4">
+                Assistant Professor (Grade I) in Department of Electronics and
+                Communication Engineering at National Institute of Technology,
+                Kurukshetra, India
+              </h2>
+              <p class="text-gray-600 mb-4">
+                Dr. Ghanapriya Singh is working as an Asst. Professor (Grade I)
+                in Department of Electronics and Communication Engineering at
+                National Institute of Technology, Kurukshetra since Nov 2022.
+                Prior to this, she was working as an Asst. Professor (Grade II)
+                in Department of Electronics Engineering at National Institute
+                of Technology, Uttarakhand since 2013. She has received her
+                Ph.D. degree in Signal Processing from Indian Institute of
+                Technology (IIT) Delhi. During her research at IIT, she was
+                working on a project with STMicroelectronics, Santa Clara,
+                California, USA. Her research work done at IIT was also
+                showcased at CES, USA that is the largest consumer electronics
+                show. She is an Inventor on 5 granted US patents and a European
+                patent. She is an Investigator in the project funded by Ministry
+                of Electronics and Information Technology and Department of
+                Science and Technology, Govt. of India. She has authored in high
+                impact factor SCI indexed journals. Her current research
+                interests include context awareness, image processing, speech
+                processing, signal processing for IoT.
+              </p>
+            </div>
+            <div class="md:ml-5 flex justify-center md:w-1/3 mt-4 ">
+              <a href="">
+                <img
+                class="rounded-full shadow-lg h-30 md:w-[80%]"
+                src="Gnanupriya-Pic.png"
+                alt="Description of image 2"
+              />
+              </a>
+              
+            </div>
+          </div>
+
+
+          <!-- <div class="grid grid-cols-1 md:flex mb-12 bg-gray-200 rounded p-3">
+            <div class="flex justify-center md:w-1/3">
+              <a href="https://nitkkr.ac.in/author/ghanapriyanitkkr-ac-in/">
+                <img
+                  class="rounded-full ml-[20px] md:ml-0 shadow-lg w-[80%]"
+                  src="Gnanupriya-Pic.png"
+                  alt="Description of image 2"
+                />
+              </a>
+            </div>
+            <div class="flex flex-col justify-center md:w-2/3 md:ml-10">
+              <h2 class="text-2xl font-bold text-gray-800 text-left">
+                Dr. Ghanapriya Singh
+              </h2>
+              <h2 class="text-blue-900 font-bold mb-4">
+                Asst. Professor (Grade I) in Department of Electronics and
+                Communication Engineering at National Institute of Technology,
+                Kurukshetra, India
+              </h2>
+              <p class="text-gray-600 mb-4">
+                Dr. Ghanapriya Singh is working as an Asst. Professor (Grade I)
+                in Department of Electronics and Communication Engineering at
+                National Institute of Technology, Kurukshetra since Nov 2022.
+                Prior to this, she was working as an Asst. Professor (Grade II)
+                in Department of Electronics Engineering at National Institute
+                of Technology, Uttarakhand since 2013. She has received her
+                Ph.D. degree in Signal Processing from Indian Institute of
+                Technology (IIT) Delhi. During her research at IIT, she was
+                working on a project with STMicroelectronics, Santa Clara,
+                California, USA. Her research work done at IIT was also
+                showcased at CES, USA that is the largest consumer electronics
+                show. She is an Inventor on 5 granted US patents and a European
+                patent. She is an Investigator in the project funded by Ministry
+                of Electronics and Information Technology and Department of
+                Science and Technology, Govt. of India. She has authored in high
+                impact factor SCI indexed journals. Her current research
+                interests include context awareness, image processing, speech
+                processing, signal processing for IoT.
+              </p>
+            </div>
+          </div> -->
+          <!-- Add more blocks as needed -->
+        </div>
+      </section>
+    </div>
+
+    <section id="new-section" class="py-12 bg-cover bg-white">
+      <div class="md:flex justify-between">
+        <div
+          class="container p-3 grid grid-cols-1 w-full md:w-1/2 gap-6 text-black md:m-5"
+          style="
+            background-image: url('clock.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          "
+        >
+          <p
+            class="text-2xl text-center p-2 font-bold bg-white text-black w-full md:w-[380px] md:ml-[150px] rounded animate-fadeIn"
+          >
+            CONFERENCE FEATURES
+          </p>
+
+          <!-- FOCUSED NETWORKING Card -->
+          <div
+            class="hover-zoom p-6 ml-3 mr-3 text-black font-bold border border-white rounded shadow-lg bg-blue-300 bg-opacity-50 border-blue-900 shadow-2xl transition-all duration-300"
+          >
+            <h3 class="text-2xl font-bold mb-2">FOCUSED NETWORKING</h3>
+            <p>
+              Provides a free and open atmosphere where attendees talk and
+              engage in creative ways.
+            </p>
+          </div>
+
+          <!-- EXPERT SPEAKERS Card -->
+          <div
+            class="hover-zoom p-6 ml-3 mr-3 text-black font-bold border border-white rounded shadow-lg bg-blue-300 bg-opacity-50 border-blue-900 shadow-2xl transition-all duration-300"
+          >
+            <h3 class="text-2xl font-bold mb-2">EXPERT SPEAKERS</h3>
+            <p>
+              Our speakers represent the cream of research and development
+              practitioners worldwide.
+            </p>
+          </div>
+
+          <!-- BRILLIANT IDEAS Card -->
+          <div
+            class="hover-zoom p-6 ml-3 mr-3 text-black font-bold border border-white rounded shadow-lg bg-blue-300 bg-opacity-50 border-blue-900 shadow-2xl transition-all duration-300"
+          >
+            <h3 class="text-2xl font-bold mb-2">BRILLIANT IDEAS</h3>
+            <p>
+              High-impact, collaborative and new approaches to some of the
+              world’s toughest problems.
+            </p>
+          </div>
+
+          <!-- EXCEPTIONAL PROGRAM Card -->
+          <div
+            class="hover-zoom p-6 ml-3 mr-3 text-black font-bold border border-white rounded shadow-lg bg-blue-300 bg-opacity-50 border-blue-900 shadow-2xl transition-all duration-300"
+          >
+            <h3 class="text-2xl font-bold mb-2">EXCEPTIONAL PROGRAM</h3>
+            <p>
+              Includes demonstrations, keynote speeches, plenary panel, breakout
+              sessions as well as the industry program.
+            </p>
+          </div>
+
+          <!-- GLOBAL PARTICIPATION Card -->
+          <div
+            class="hover-zoom p-6 ml-3 mr-3 text-black font-bold border border-white rounded shadow-lg bg-blue-300 bg-opacity-50 border-blue-900 shadow-2xl transition-all duration-300"
+          >
+            <h3 class="text-2xl font-bold mb-2">GLOBAL PARTICIPATION</h3>
+            <p>
+              Anticipating attendees from various countries all over the world.
+            </p>
+          </div>
+
+          <!-- INSPIRATIONAL LEARNING Card -->
+          <div
+            class="hover-zoom p-6 ml-3 mr-3 text-black font-bold border border-white rounded shadow-lg bg-blue-300 bg-opacity-50 border-blue-900 shadow-2xl transition-all duration-300"
+          >
+            <h3 class="text-2xl font-bold mb-2">INSPIRATIONAL LEARNING</h3>
+            <p>
+              Bringing together researchers from several fields to collaborate
+              together and create lasting change.
+            </p>
+          </div>
+        </div>
+
+        <div
+    class="container grid grid-cols-1 w-full md:w-1/2 gap-6 text-black p-3 md:m-5"
+    style="
+        background-image: url('award-transformed.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;"
+>
+    <p
+        class="text-2xl text-center text-black p-2 font-bold bg-white w-full md:w-[380px] mt-2 md:mt-0 md:ml-[150px] text-center rounded animate-fadeIn"
+    >
+        HONORS & AWARDS
+    </p>
+
+    <div class="md:p-6 ml-3 mr-3 bg-gray-200 bg-opacity-90  rounded flex items-center transition-transform transform hover:scale-105 border border-white">
+        <img src="awards1.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+        <h3 class="md:text-2xl font-bold mb-8 md:mb-2 text-black text-center flex-grow mt-10">
+            BEST PAPER
+        </h3>
+        <img src="psper-removebg-preview.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110"/>
+    </div>
+
+    <div class="md:p-6 ml-3 mr-3 bg-gray-200 bg-opacity-90  rounded flex items-center transition-transform transform hover:scale-105 border border-white">
+        <img src="awards1.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+        <h3 class="md:text-2xl font-bold mb-8 md:mb-2 text-black text-center flex-grow mt-10">
+            WOMEN EXCELLENCE
+        </h3>
+        <img src="women.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+    </div>
+
+    <div class="md:p-6 ml-3 mr-3 bg-gray-200 bg-opacity-90  rounded flex items-center transition-transform transform hover:scale-105 border border-white">
+        <img src="awards1.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+        <h3 class="md:text-2xl font-bold mb-8 md:mb-2 text-black text-center flex-grow mt-10">
+            SESSION WINNER
+        </h3>
+        <img src="session.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+    </div>
+
+    <div class="md:p-6 ml-3 mr-3 bg-gray-200 bg-opacity-90  rounded flex items-center transition-transform transform hover:scale-105 border border-white">
+        <img src="awards1.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+        <h3 class="md:text-2xl font-bold mb-8 md:mb-2 text-black text-center flex-grow mt-10">
+            UNIQUE RESEARCH AREA
+        </h3>
+        <img src="research.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+    </div>
+
+    <div class="md:p-6 ml-3 mr-3 bg-gray-200 bg-opacity-90  rounded flex items-center transition-transform transform hover:scale-105 border border-white">
+        <img src="awards1.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+        <h3 class="md:text-2xl font-bold mb-8 md:mb-2 text-black text-center flex-grow mt-10">
+            YOUNGEST AND OLDEST
+        </h3>
+        <img src="young_old.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+    </div>
+
+    <div class="md:p-6 ml-3 mr-3 bg-gray-200 bg-opacity-90  rounded flex items-center transition-transform transform hover:scale-105 border border-white">
+        <img src="awards1.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+        <h3 class="md:text-2xl font-bold mb-8 md:mb-2 text-black text-center flex-grow mt-10">
+            BEST PRESENTATION
+        </h3>
+        <img src="present.png" alt="" class="h-10 w-16 md:h-20 md:w-36 transition-transform transform hover:scale-110" />
+    </div>
+</div>
+
+      </div>
+    </section>
+
+    <section class="py-12 p-5">
+      <div class="container mx-auto text-center mb-8">
+        <h1 class="text-2xl font-bold underline-blue" id="indexing">
+          <i class="fas fa-book mr-2 text-blue-700"></i>
+          
+          Indexing
+        </h1>
+        <br />
+        <p class="text-justify">
+          Post-conference, proceedings will be made available to the following
+          indexing services for possible inclusion:
+        </p>
+      </div>
+      <div class="container mx-auto grid grid-cols-2 md:flex justify-between"></a>
+        <a href="" target=""><img src="scopus-elsevier.jpg" alt="Scopus" class="w-48 h-auto mx-auto p-3" /></a>
+        <a href="" target=""><img src="dblp.png" alt="dblp" class="w-48 h-auto mx-auto p-3" /></a>
+        <a href="" target=""><img src="scholar.jpg" alt="google-scholar" class="w-48 h-auto mx-auto p-3"/></a>
+        <!-- <img src="zpmath.jpeg" alt="zpmath" class="w-48 h-auto mx-auto p-3" /> -->
+        <a href="https://dl.acm.org/" target="_blank"><img src="ML.jpg" alt="zpmath" class="w-48 h-auto mx-auto p-3" /></a>
+      </div>
+    </section>
+
+    <footer class="bg-blue-900 py-6 text-center text-white">
+      <p>
+        &copy; 2025 International Conference on Smart Eco-Systems using AI and Green Computing for Sustainable Development All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

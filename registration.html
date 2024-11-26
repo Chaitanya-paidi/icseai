@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICSEAI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+    
+      @keyframes slideShow {
+        0% { opacity: 1; }
+        33% { opacity: 1; }
+        33.33% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+    
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+    
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+    
+      .tab button:hover {
+        background-color: #ddd;
+      }
+    
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+    
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+    
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+      }
+
+      .map-container {
+          height: 100%;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev, .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" />
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-blue-900 text-white px-2 py-1 rounded">ICSEAI</span> 2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+          <li class="relative group">
+            <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+              Call for Papers
+              <svg class="ml-1 w-4 h-4 fill-current text-black group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible">
+              <li><a href="callforPapers.html#conf" class="block px-4 py-2 hover:bg-blue-100">About ICSEAI</a></li>
+              <li><a href="callforPapers.html#dates" class="block px-4 py-2 hover:bg-blue-100">Important Dates</a></li>
+              <li><a href="callforPapers.html#scope" class="block px-4 py-2 hover:bg-blue-100">Scope</a></li>
+              <li><a href="callforPapers.html#conf-tracks" class="block px-4 py-2 hover:bg-blue-100">Conference Tracks</a></li>
+            </ul>
+          </li>
+          <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+          <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+          <li><a href="registration.html" class="text-blue-400">Registration</a></li>
+          <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+          <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+          <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-blue-400 focus:outline-none" id="menu-button">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <ul class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden" id="mobile-menu">
+        <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+        <li>
+          <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+            Call for Papers
+            <svg class="ml-1 w-4 h-4 fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li><a href="callforPapers.html#conf" class="text-blue-400">About ICSEAI</a></li>
+            <li><a href="callforPapers.html#dates-m" class="text-blue-400">Important Dates</a></li>
+            <li><a href="callforPapers.html#scope" class="text-blue-400">Scope</a></li>
+            <li><a href="callforPapers.html#conf-tracks" class="text-blue-400">Conference Tracks</a></li>
+          </ul>
+        </li>
+        <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+        <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+        <li><a href="registration.html" class="text-blue-400">Registration</a></li>
+        <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+        <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+        <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+
+  <header class="h-[950px] md:h-full text-center text-white bg-blue-900 relative">
+    <div class="flex flex-col md:flex-row relative z-10">
+
+      <div class="w-full md:w-[39%] relative overflow-hidden">
+        <div class="slideshow">
+          <div
+            class="slide"
+            style="background-image: url('PSCMR.jpeg'); height: 750px"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('barrage.jpeg'); height: 750px"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('durga.jpeg'); height: 750px"
+          ></div>
+          <div class="slide">
+            <iframe
+              width="100%"
+              height="750px"
+              src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-[61%] md:px-4 py-25">
+        <div class="w-full">
+          <div class="slideshow-container md:hidden">
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 4</div>
+              <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 4</div>
+              <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 4</div>
+              <img src="durga.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">4 / 4</div>
+              <iframe
+                width="100%"
+                height="200px"
+                src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <div style="text-align: center" class="md:hidden">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+              <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="text-2xl font-bold t">
+          <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+          International Conference on <br> <span class="text-[28px]">Smart Eco-Systems using AI and Green Computing for Sustainable Development</span> <br> ICSEAI 2025        </h1>
+        <br />
+        <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+        <h2 class="text-xl font-bold mb-4">Hybrid Mode</h2>
+        <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+        <h3 class="text-lg mb-4">
+          ALL ACCEPTED & PRESENTED papers will be published in <br />
+          <b>SCOPUS indexed SPRINGER</b>
+        </h3>
+        <div class="flex justify-center space-x-4 mb-4">
+          <img src="springer.png" alt="Springer" class="h-20 w-20" />
+          <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
+        </div>
+        <p class="mb-2">Submission is now open: Till December 15, 2024</p>
+        <div class="button-container2"></div>
+        <button
+          class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+        >
+          Submit Your Paper
+        </button>
+      </div>
+      
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+    </script>
+  </header>
+
+    <div class="mt-1 bg">
+      <marquee behavior="" direction=""
+        >A virtual meeting is available for all registered authors who intend to
+        submit their work but are unable to attend the conference.</marquee
+      >
+    </div>
+
+    <div class="bg-blue-900 text-white text-center p-3">
+      <p class="font-bold text-2xl">
+        <i class="fas fa-clipboard-list mr-2"></i> REGISTRATION
+      </p>
+    </div>
+    
+
+    <div class="p-[30px] bg-gray-100 font-bold">
+      <p class="text-center">The ICSEAI 2025 registration fees are as follows, and must be paid in the USD or local currency as per the current exchange rate.
+        <br> <br>
+        Authors Not from India (Registration Fees is in USD)</p> <br> <br>
+      
+        <div class="">
+          <div class=" hidden md:block mx-[100px]">
+            <table class="w-full text-center bg-white border border-gray-300 rounded-lg shadow-md">
+              <thead>
+                <tr class="bg-blue-900 text-white border-b border-gray-300">
+                  <th colspan="1" class="py-2 px-1 text-center">Category</th>
+                  <th colspan="1" class="py-2 px-1 text-center">Early Bird: on or before Feb 1, 2025</th>
+                  <th colspan="1" class="py-2 px-1 text-center">Regular Registration: Feb 6th - Mar 7th, 2025</th>
+                  <th colspan="1" class="py-2 px-1 text-center">Spot Registration: March 20-21, 2025</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-300">
+                  <td class="py-2 px-4">Full Time Students</td>
+                  <td class="py-2 px-4">$100</td>
+                  <td class="py-2 px-4">$125</td>
+                  <td class="py-2 px-4">$150</td>
+                </tr>
+                <tr class="border-b border-gray-300">
+                  <td class="py-2 px-4">Faculty/ Research Scholars</td>
+                  <td class="py-2 px-4">$125</td>
+                  <td class="py-2 px-4">$150</td>
+                  <td class="py-2 px-4">$175</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-4">Industry</td>
+                  <td class="py-2 px-4">$150</td>
+                  <td class="py-2 px-4">$175</td>
+                  <td class="py-2 px-4">$225</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="md:hidden">
+            <div class="border-2 border-gray-300 p-2 bg-white">
+              <div class="font-bold bg-blue-900 text-white p-2 text-center">Full Time Students</div>
+              <div class="font-bold mt-2">Early Bird: <br>on or before Feb 1, 2025-</div>
+              <div>$100</div>
+              <div class="font-bold mt-2">Regular Registration: <br>Feb 6th - Mar 7th, 2025-</div>
+              <div>$125</div>
+              <div class="font-bold mt-2">Spot Registration: <br> March 20-21, 2025-</div>
+              <div>$150</div>
+            </div>
+        
+            <div class="border-2 border-gray-300 p-2 bg-white mt-[5px]">
+              <div class="font-bold bg-blue-900 text-white p-2 text-center">Faculty/ Research Scholars</div>
+              <div class="font-bold mt-2">Early Bird: <br>on or before Feb 1, 2025-</div>
+              <div>$125</div>
+              <div class="font-bold mt-2">Regular Registration: <br> Feb 6th - Mar 7th, 2025-</div>
+              <div>$150</div>
+              <div class="font-bold mt-2">Spot Registration: <br> March 20-21, 2025-</div>
+              <div>$175</div>
+            </div>
+        
+            <div class="border-2 border-gray-300 p-2 bg-white mt-[5px]">
+              <div class="font-bold bg-blue-900 text-white p-2 text-center">Industry</div>
+              <div class="font-bold mt-2">Early Bird: <br> on or before Feb 1, 2025-</div>
+              <div>$150</div>
+              <div class="font-bold mt-2">Regular Registration: <br> Feb 6th - Mar 7th, 2025-</div>
+              <div>$175</div>
+              <div class="font-bold mt-2">Spot Registration: <br> March 20-21, 2025-</div>
+              <div>$225</div>
+            </div>
+          </div>
+        </div>
+          
+          <style>
+            table, th, td {
+              border: 1px solid gray;
+            }
+          </style>
+
+<p class="text-blue-900 text-2xl mt-[50px] mb-[20px] flex items-center">
+  <i class="fas fa-user-check mr-2 "></i>
+  <span class="underline-blue text-black">Registration includes</span>
+</p>
+<ul class="list-disc list-inside space-y-4 ml-6">
+  <li>Two full days of expert insights from top-tier presenters.</li>
+  <li>Certificate of Participation OR Presentation of Paper for a registered person only.</li>
+  <li>Inclusion in SPRINGER proceedings, if paper accepted and presented in the conference.</li>
+</ul>
+
+<p class="text-blue-900 text-2xl mt-[50px] mb-[20px] flex items-center">
+  <i class="fas fa-info-circle mr-2 "></i>
+  <span class="underline-blue text-black">Important Information for Registration</span>
+</p>
+<ul class="list-disc list-inside space-y-4 ml-6">
+  <li>The deadline for registration can be seen in the important dates. It is important that at least one author per accepted paper registers on or before the deadline.</li>
+  <li>Authors' registration includes the submission of up to ten (10) pages for a full paper.</li>
+  <li>M. Tech./B. Tech./MCA students will be considered as Full-time Students.</li>
+  <li>Full-time Ph. D. Scholars will be considered as Research Scholars.</li>
+  <li>At least one author must register and attend the conference to present the paper in person or virtual mode.</li>
+  <li>Participants/Attendees/Listeners are also invited.</li>
+  <li>Certificate of presentation shall be issued only if the paper is presented either in person or through a virtual platform.</li>
+</ul>
+
+<p class="text-blue-900 text-2xl mt-[50px] mb-[20px] flex items-center">
+  <i class="fas fa-laptop mr-2 "></i>
+  <span class="underline-blue text-black">Presentation in Virtual Mode</span>
+</p>
+<p class="ml-6">Amid prevailing conditions due to COVID-19, a virtual meeting platform may be made available for all registered authors who intend to submit their work but are unable to attend the conference. Authors may register and present their paper through the virtual platform.</p>
+<br>
+<p class="ml-6">Authors shall be sent a Certificate of Participation, Conference Proceedings link, and relevant literature by mail.</p>
+
+
+      </div>
+    </div>
+    <footer class="bg-blue-900 py-6 text-center text-white">
+      <p>
+        &copy; 2025 International Conference on Smart Eco-Systems using AI and Green Computing for Sustainable Development All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

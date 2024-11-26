@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICSEAI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+    
+      @keyframes slideShow {
+        0% { opacity: 1; }
+        33% { opacity: 1; }
+        33.33% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+    
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+    
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+    
+      .tab button:hover {
+        background-color: #ddd;
+      }
+    
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+    
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+    
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+      }
+
+      .map-container {
+          height: 100%;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev, .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+    </style>
+  </head>
+  <body class="bg-white text-black text-justify">
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" />
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-blue-900 text-white px-2 py-1 rounded">ICSEAI</span> 2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+          <li class="relative group">
+            <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+              Call for Papers
+              <svg class="ml-1 w-4 h-4 fill-current text-black group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible">
+              <li><a href="callforPapers.html#conf" class="block px-4 py-2 hover:bg-blue-100">About ICSEAI</a></li>
+              <li><a href="callforPapers.html#dates" class="block px-4 py-2 hover:bg-blue-100">Important Dates</a></li>
+              <li><a href="callforPapers.html#scope" class="block px-4 py-2 hover:bg-blue-100">Scope</a></li>
+              <li><a href="callforPapers.html#conf-tracks" class="block px-4 py-2 hover:bg-blue-100">Conference Tracks</a></li>
+            </ul>
+          </li>
+          <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+          <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+          <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+          <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+          <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+          <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-blue-400 focus:outline-none" id="menu-button">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <ul class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden" id="mobile-menu">
+        <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+        <li>
+          <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+            Call for Papers
+            <svg class="ml-1 w-4 h-4 fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li><a href="callforPapers.html#conf" class="text-blue-400">About ICSEAI</a></li>
+            <li><a href="callforPapers.html#dates-m" class="text-blue-400">Important Dates</a></li>
+            <li><a href="callforPapers.html#scope" class="text-blue-400">Scope</a></li>
+            <li><a href="callforPapers.html#conf-tracks" class="text-blue-400">Conference Tracks</a></li>
+          </ul>
+        </li>
+        <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+        <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+        <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+        <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+        <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+        <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+
+    <header class="h-[950px] md:h-full text-center text-white bg-blue-900 relative">
+      <div class="flex flex-col md:flex-row relative z-10">
+
+        <div class="w-full md:w-[39%] relative overflow-hidden">
+          <div class="slideshow">
+            <div
+              class="slide"
+              style="background-image: url('PSCMR.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('barrage.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('durga.jpeg'); height: 750px"
+            ></div>
+            <div class="slide">
+              <iframe
+                width="100%"
+                height="750px"
+                src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-[61%] md:px-4 py-25">
+          <div class="w-full">
+            <div class="slideshow-container md:hidden">
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="durga.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <iframe
+                  width="100%"
+                  height="200px"
+                  src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+
+              <div style="text-align: center" class="md:hidden">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="text-2xl font-bold t">
+            <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+            International Conference on <br> <span class="text-[28px]">Smart Eco-Systems using AI and Green Computing for Sustainable Development</span> <br> ICSEAI 2025
+          </h1>
+          <br />
+          <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+          <h2 class="text-xl font-bold mb-4">Hybrid Mode</h2>
+          <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+          <h3 class="text-lg mb-4">
+            ALL ACCEPTED & PRESENTED papers will be published in <br />
+            <b>SCOPUS indexed SPRINGER</b>
+          </h3>
+          <div class="flex justify-center space-x-4 mb-4">
+            <img src="springer.png" alt="Springer" class="h-20 w-20" />
+            <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
+          </div>
+          <p class="mb-2">Submission is now open: Till December 15, 2024</p>
+          <div class="button-container2"></div>
+          <button
+            class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+          >
+            Submit Your Paper
+          </button>
+        </div>
+        
+      </div>
+
+      <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+      </script>
+    </header>
+
+    <div class="mt-1 bg">
+      <marquee behavior="" direction=""
+        >A virtual meeting is available for all registered authors who intend to
+        submit their work but are unable to attend the conference.</marquee
+      >
+    </div>
+
+    <div class="bg-blue-900 text-white text-center p-3" id="about-pscmr">
+      <p class="font-bold text-2xl">
+        <i class="fas fa-university mr-2"></i> ABOUT PSCMR
+      </p>
+    </div>
+
+    <div class="bg-white p-6 shadow-lg rounded-lg text-gray-700">
+      <p class="mb-4">
+        <strong>About Institution</strong><br>
+        Potti Sriramulu Chalavadi Mallikarjuna Rao College of Engineering and Technology (PSCMRCET) was started in the year 2008, under the aegis of, more than hundred years old, Sri Kanyaka Parameswari Vissamsetti Venkataratnam Hindu High Schools Committee (SKPVVHHSC – Established in 1906), by a group of philanthropists belonging to Vijayawada. The college is permanently affiliated to JNTUK Kakinada and is approved by AICTE, New Delhi. The institution is accredited with A++ grade (3.68/4) by NAAC and the engineering programs are accredited by NBA. The college offers B. Tech, MBA, MCA and M. Tech programs. Spread over a sprawling campus with aesthetically designed buildings, the college has become the source of inspiration for the students. PSCMRCET has become synonymous with ultra modern learning practices.
+      </p>
+      
+      <p class="mb-4">
+        PSCMRCET aims to impart quality education supported by societal responsiveness fostering holistic development of its students. The mission of the college is to impart quality and value based technology and management education relevant to contemporary corporate and societal needs through continuous learning, societal responsiveness supported by strategic partnerships with industry and academia. At PSCMRCET education revolves around providing a multidimensional development programme to its students, ameliorating their interpersonal skills and corporate etiquette, thereby resulting in accelerated professional growth. The college aspires to promote leadership through societal responsiveness and excellence in technology and management education.
+      </p>
+    
+      <p class="mb-4">
+        With a Governing Body consisting of Three Former Vice Chancellors and representatives from I.T. and Core industries – The TCS, Infosys, H-Bots, Eurth Techtronics, Galaxe Solutions Inc., Efftronics, Govt. Water Resource Dept., Athena Power, Price Water, Sesha Sai Knittings, Minerva Group of Hotels – PSCMRCET continues to be rated as one of the leading technical colleges in the capital region of Andhra Pradesh. The academic programs offered in both Engineering and Management are highly regarded. The institute is known for imparting high-quality professional education and training in an atmosphere of discipline. All the stakeholders work towards fulfilling this mission, shaping our students into people who can play an effective role in the development of a knowledge society.
+      </p>
+    
+      <p class="mb-4">
+        The college has been committed to the vision of making a significant contribution to a highly advanced technological society with profound human values by sending forth students as people of unparalleled expertise and a high sense of ethical values.
+      </p>
+    
+      <p class="mb-4">
+        Beyond curriculum, topics on niche technologies are addressed by inviting expert resource persons from industry and academia. The A.P. State Skill Development Council has conducted more than 151 training programs in the last three years. The college’s commitment to providing internships is evident from the award it received from AICTE for the maximum number of internships in the southern region through Internshala.
+      </p>
+    
+      <p class="mb-4">
+        With an ardent commitment to help students become perfect wholesome personalities, the College envisages a campus that promotes healthy interaction between faculty and students and among the students. A well-structured student counseling system promotes team spirit and cooperative learning. Extra and co-curricular activities are encouraged through various campus clubs and committees, such as the PSCMR Toastmasters Club, Chess Club, Roteract Club, and Music Club, along with student chapters of esteemed professional bodies like the Institution of Engineers, Computer Society of India, and Institution of Electronics and Telecommunication Engineers. Student participation in project expos, hackathons, research paper submissions, and sports at inter and intra-college levels is highly appreciated and encouraged, with students being reimbursed for travel expenses and registration fees.
+      </p>
+    
+      <p class="mb-4">
+        Teaching staff are sponsored to attend FDPs and seminars, while non-teaching staff are sent to skill-upgradation programs with financial aid. All campus activities are meticulously planned and executed by students under the mentorship of experienced faculty.
+      </p>
+    
+      <p class="mb-4">
+        PSCMR College of Engineering and Technology has become synonymous with ultra-modern learning and excellent placements. Within a short span, the college has emerged as one of the prestigious educational institutions in the region, attracting students from across the state. The fact that more than 67% of our students are girls is a testament to the faith and trust of parents in the institution’s strict, no-compromise attitude toward discipline.
+      </p>
+      <p class="mb-4">
+        <strong>Key Strengths</strong>
+      </p>
+      
+      <ol class="list-decimal ml-6 mb-4">
+        <li class="mb-2"><strong>Cutting-Edge Research:</strong> The conference will feature the latest advancements in data science, computational techniques, and their applications in business information systems. This provides an excellent platform for presenting novel research and methodologies.</li>
+        <li class="mb-2"><strong>Diverse Expertise:</strong> ICSEAI typically attracts a wide range of experts from academia, industry, and government sectors, offering a rich diversity of perspectives and experiences. This can lead to valuable cross-disciplinary insights and collaborations.</li>
+        <li class="mb-2"><strong>High-Quality Keynote Speakers:</strong> The event usually includes keynote addresses from prominent figures in the field, providing attendees with insights into current trends, challenges, and future directions in data science and computational business systems.</li>
+        <li class="mb-2"><strong>Networking Opportunities:</strong> With participants from various sectors, the conference offers numerous opportunities for networking, collaboration, and knowledge exchange. This can be beneficial for building professional relationships and exploring new research or business opportunities.</li>
+        <li class="mb-2"><strong>Publication Opportunities:</strong> Papers presented at the conference are often published in reputable journals or conference proceedings, providing a valuable platform for researchers to disseminate their work and gain recognition.</li>
+        <li class="mb-2"><strong>Industry-Relevant Topics:</strong> The conference addresses real-world challenges and applications of data science and computational methods in business settings, making it highly relevant for practitioners and businesses looking to leverage these technologies.</li>
+        <li class="mb-2"><strong>Innovative Technologies:</strong> The event often showcases emerging technologies and methodologies, such as advancements in machine learning, big data analytics, artificial intelligence, and their applications in business contexts.</li>
+        <li class="mb-2"><strong>Global Reach:</strong> ICSEAI typically attracts an international audience, offering a global perspective on data science and computational business systems. This diversity can lead to a richer exchange of ideas and practices.</li>
+        <li class="mb-2"><strong>Interactive Sessions:</strong> The conference may include interactive sessions such as panel discussions, Q&A sessions, and roundtable discussions, allowing for dynamic engagement and deeper exploration of key topics.</li>
+      </ol>
+      
+      <p class="mb-4">
+        Overall, ICSEAI 2025 promises to be a significant event for anyone involved in data science and computational business information systems, offering a comprehensive platform for learning, networking, and professional growth.
+      </p>
+      
+      <p class="mb-4">
+        <strong>Preliminary Chapter Titles</strong>
+      </p>
+      
+      <ol class="list-decimal ml-6 mb-4">
+        <li class="mb-2">Data Science and Computational Business Systems Overview</li>
+        <li class="mb-2">Data Collection and Management</li>
+        <li class="mb-2">Data Preprocessing and Cleaning</li>
+        <li class="mb-2">Exploratory Data Analysis Techniques</li>
+        <li class="mb-2">Machine Learning Models</li>
+        <li class="mb-2">Advanced Machine Learning Techniques</li>
+        <li class="mb-2">Big Data Frameworks and Platforms</li>
+        <li class="mb-2">Real-Time Data Processing</li>
+        <li class="mb-2">Data Visualization Methods</li>
+        <li class="mb-2">Business Intelligence and Analytics</li>
+        <li class="mb-2">Ethical Considerations in Data Science</li>
+        <li class="mb-2">Regulatory and Compliance Issues</li>
+        <li class="mb-2">Applications of Data Science in Various Industries</li>
+        <li class="mb-2">Case Studies in Computational Business Systems</li>
+        <li class="mb-2">Emerging Trends in Data Science and Computational Business Systems</li>
+      </ol>
+      <p class="mb-4">
+        <strong>Preliminary Chapter Titles and Detailed Table of Contents</strong>
+      </p>
+      
+      <ol class="list-decimal ml-6 mb-4">
+        <li class="mb-2"><strong>Data Science and Computational Business Systems Overview:</strong> This chapter sets the stage for the book by exploring the key concepts and significance of data science and computational systems in business contexts. It will discuss the evolution of these fields, their impact on various industries, and provide an overview of the methodologies and tools commonly used. The chapter will also outline the goals and structure of the book.</li>
+        
+        <li class="mb-2"><strong>Data Collection and Management:</strong> This chapter delves into the techniques and technologies for gathering and managing data. It covers various data sources, methods for data acquisition, and best practices for ensuring data quality and integrity. Topics include data warehousing, data lakes, and data integration strategies.</li>
+        
+        <li class="mb-2"><strong>Data Preprocessing and Cleaning:</strong> Here, the focus will be on the essential steps of data preprocessing and cleaning, which are crucial for accurate analysis. The chapter will address methods for handling missing data, data normalization, transformation, and error detection. It will also highlight tools and techniques for automating these processes.</li>
+    
+        <li class="mb-2"><strong>Exploratory Data Analysis Techniques:</strong> This chapter explores techniques for exploring and analyzing data to uncover patterns, trends, and insights. It includes methods such as statistical summaries, data visualization, and correlation analysis. Practical examples and case studies will illustrate how exploratory data analysis can guide decision-making.</li>
+    
+        <li class="mb-2"><strong>Machine Learning Models:</strong> This chapter provides an overview of machine learning models used in data science. It covers supervised learning techniques such as regression and classification, as well as unsupervised learning techniques like clustering and dimensionality reduction. Key algorithms and their applications in business contexts will be discussed.</li>
+    
+        <li class="mb-2"><strong>Advanced Machine Learning Techniques:</strong> Building on the previous chapter, this section explores more complex machine learning techniques including deep learning, reinforcement learning, and ensemble methods. The chapter will detail the architecture of neural networks, the application of algorithms to large datasets, and the challenges associated with advanced models.</li>
+    
+        <li class="mb-2"><strong>Big Data Frameworks and Platforms:</strong> This chapter examines the infrastructure and tools necessary for managing and processing large volumes of data. Topics include Hadoop, Apache Spark, and other big data frameworks. The chapter will also address scalability issues, distributed computing, and cloud-based solutions.</li>
+    
+        <li class="mb-2"><strong>Real-Time Data Processing:</strong> Focusing on the importance and techniques of processing data in real-time, this chapter will cover stream processing frameworks, real-time analytics tools, and their applications in various industries. It will also discuss the challenges of latency and throughput.</li>
+    
+        <li class="mb-2"><strong>Data Visualization Methods:</strong> This chapter covers the principles and tools of data visualization, emphasizing the creation of effective charts, graphs, and interactive dashboards. It will explore various visualization techniques and discuss how to present data in a clear and actionable way. Case studies will illustrate successful visualization practices.</li>
+    
+        <li class="mb-2"><strong>Business Intelligence and Analytics:</strong> The focus here is on the use of data science techniques to drive business intelligence and analytics. The chapter will cover business intelligence platforms, data mining techniques, and how analytics can inform strategic business decisions. Practical examples from different sectors will be included.</li>
+    
+        <li class="mb-2"><strong>Ethical Considerations in Data Science:</strong> This chapter addresses the ethical issues associated with data science practices, including data privacy, security, and fairness. It will discuss the implications of data misuse and provide guidelines for ethical data handling. Relevant case studies will highlight both positive and negative outcomes.</li>
+    
+        <li class="mb-2"><strong>Regulatory and Compliance Issues:</strong> This section will explore the legal and regulatory frameworks governing data usage and management. Topics include GDPR, CCPA, and other relevant regulations. The chapter will also cover compliance strategies and the impact of regulations on business operations.</li>
+    
+        <li class="mb-2"><strong>Applications of Data Science in Various Industries:</strong> This chapter provides an overview of how data science is applied across different industries, such as finance, healthcare, retail, and manufacturing. It will include case studies and examples of successful data-driven projects in each sector.</li>
+    
+        <li class="mb-2"><strong>Case Studies in Computational Business Systems:</strong> Featuring detailed case studies, this chapter will illustrate real-world applications of computational business systems. Each case study will examine the problem, the data science approach used, and the outcomes. Lessons learned and best practices will be highlighted.</li>
+    
+        <li class="mb-2"><strong>Emerging Trends in Data Science and Computational Business Systems:</strong> The final chapter will look forward to emerging trends and future directions in the field. Topics will include advancements in artificial intelligence, quantum computing, and their potential impact on data science and business systems. The chapter will provide insights into upcoming innovations and their implications.</li>
+      </ol>
+    
+      <p class="mb-4">
+        <strong>Chapter by Chapter Synopsis</strong>
+      </p>
+    
+      <ol class="list-decimal ml-6 mb-4">
+        <li class="mb-2"><strong>Data Science and Computational Business Systems Overview:</strong> This chapter introduces the foundational concepts of data science and its integration with computational business systems. It provides a historical perspective on the evolution of these fields and outlines their significance in modern business environments. The chapter also highlights key trends and sets the context for the book’s exploration of advanced topics.</li>
+    
+        <li class="mb-2"><strong>Data Collection and Management:</strong> This chapter focuses on methods for acquiring and managing data effectively. It covers various data sources, including internal and external datasets, and introduces techniques for data acquisition such as web scraping and API integration. The chapter also discusses data storage solutions like databases and data lakes, emphasizing strategies for maintaining data integrity and quality.</li>
+    
+        <li class="mb-2"><strong>Data Preprocessing and Cleaning:</strong> Essential for preparing data for analysis, this chapter delves into data preprocessing and cleaning techniques. It addresses methods for handling missing data, outliers, and inconsistencies. The chapter provides practical guidelines for data normalization, transformation, and feature engineering, and discusses tools for automating these processes.</li>
+    
+        <li class="mb-2"><strong>Exploratory Data Analysis Techniques:</strong> This chapter covers exploratory data analysis (EDA) techniques used to understand data characteristics and uncover patterns. It includes statistical summaries, graphical representations, and correlation analysis. Practical examples demonstrate how EDA can inform further analysis and hypothesis generation.</li>
+    
+        <li class="mb-2"><strong>Machine Learning Models:</strong> This chapter introduces machine learning models essential for data science applications. It covers supervised learning techniques such as linear regression and classification, as well as unsupervised learning methods like clustering and dimensionality reduction. The chapter includes practical applications and examples of these models in business settings.</li>
+    
+        <li class="mb-2"><strong>Advanced Machine Learning Techniques:</strong> Building on earlier discussions, this chapter explores advanced machine learning techniques including deep learning, reinforcement learning, and ensemble methods. It explains neural network architectures, advanced algorithms, and their applications. The chapter also addresses the challenges and innovations in these advanced areas.</li>
+    
+        <li class="mb-2"><strong>Big Data Frameworks and Platforms:</strong> This chapter examines the frameworks and platforms designed for managing and processing large datasets. It covers technologies such as Hadoop and Apache Spark, discussing their architecture, capabilities, and use cases. The chapter also addresses scalability issues and the role of cloud computing in big data processing.</li>
+    
+        <li class="mb-2"><strong>Real-Time Data Processing:</strong> Focused on the processing of data as it is generated, this chapter explores real-time data processing technologies and frameworks. It includes discussions on stream processing with tools like Apache Kafka and Apache Flink, and the challenges of achieving low latency and high throughput in real-time systems.</li>
+    
+        <li class="mb-2"><strong>Data Visualization Methods:</strong> This chapter covers techniques and best practices for visualizing data effectively. It includes discussions on creating informative charts, graphs, and interactive dashboards. The chapter also highlights tools and software for data visualization, and offers guidelines for presenting data in a way that supports decision-making.</li>
+    
+        <li class="mb-2"><strong>Business Intelligence and Analytics:</strong> This chapter explores how data science techniques are used to drive business intelligence and analytics. It covers business intelligence platforms, data mining techniques, and the role of analytics in strategic business decisions. The chapter includes case studies demonstrating how analytics can enhance business performance.</li>
+    
+        <li class="mb-2"><strong>Ethical Considerations in Data Science:</strong> This chapter addresses the ethical issues associated with data science practices. It covers data privacy, security, and fairness, and provides guidelines for responsible data use. The chapter also discusses the consequences of unethical data practices through relevant case studies.</li>
+    
+        <li class="mb-2"><strong>Regulatory and Compliance Issues:</strong> This chapter explores the legal and regulatory frameworks governing data management. It includes discussions on regulations such as GDPR and CCPA, and their impact on data practices. The chapter provides strategies for achieving compliance and highlights the importance of adhering to legal requirements.
+          <h1 class="text-2xl font-bold text-gray-800 mb-6">Description of the Book</h1>
+        
+          <p class="text-gray-700 leading-relaxed mb-4">
+              This book provides a comprehensive exploration of data science and computational business information systems, offering readers the tools and insights needed to harness the power of data in modern business environments. With the rapid evolution of technology and the explosion of data, understanding how to effectively collect, analyze, and leverage information is crucial for maintaining a competitive edge.
+          </p>
+  
+          <p class="text-gray-700 leading-relaxed mb-4">
+              The book covers a range of critical topics including data collection and management, data preprocessing and cleaning, and exploratory data analysis techniques. It delves into machine learning models and advanced techniques such as deep learning and reinforcement learning, providing practical applications in business contexts. Readers will also explore big data frameworks and real-time data processing, along with methods for effective data visualization and business intelligence.
+          </p>
+  
+          <p class="text-gray-700 leading-relaxed mb-4">
+              Addressing key issues such as ethical considerations, regulatory compliance, and industry-specific applications, this book aims to equip professionals with the knowledge to navigate the complex landscape of data science. Each chapter provides actionable insights and real-world case studies to help solve common challenges faced by data scientists and business analysts.
+          </p>
+  
+          <p class="text-gray-700 leading-relaxed mb-4">
+              By focusing on both foundational concepts and advanced methodologies, this book is designed for data science professionals, business analysts, and decision-makers who seek to enhance their understanding of data-driven strategies. Whether you're aiming to optimize business processes, drive innovation, or ensure compliance, this book offers essential guidance to achieve your goals in the dynamic field of data science.
+          </p>
+  
+          <h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Unique Selling Points</h2>
+          
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li>Offers practical insights into both fundamental and advanced data science techniques tailored for business applications.</li>
+              <li>Integrates real-world case studies across various industries to illustrate the impact of data science on business outcomes.</li>
+              <li>Explores emerging trends and technologies, including deep learning and quantum computing, shaping the future of data science.</li>
+              <li>Addresses ethical and regulatory considerations to guide responsible and compliant data usage.</li>
+              <li>Provides actionable strategies for optimizing data management and analytics, enhancing decision-making capabilities.</li>
+          </ul>
+        </div>    
+
+<div class="bg-blue-900 text-white text-center p-3" id="about-ds">
+  <p class="font-bold text-2xl">
+    <i class="fas fa-database mr-2"></i> ABOUT DATA SCIENCE
+  </p>
+</div>
+
+<p class="m-10 text-justify leading-relaxed">
+    With the advent of IoT (Internet of Things) and Industry 4.0, the volume of data is growing at an exponential rate. Given the massive amount of data that is produced, it has led to the matured discipline of Data Science that involves collection, visualization, processing, and modeling of large and complex data sets from different domains and sources.
+    <br><br>
+    Data science is an essential part of many industries today, and its popularity has grown over the years. Companies have started implementing data science techniques to grow their business and increase customer satisfaction. Its immense popularity has increased the demanding interest among students to choose it as a career option.
+    <br><br>
+    <strong>Data Science</strong> is an emerging area of Computer Science and Engineering (CSE). The Department of CSE-Data Science was established in the year 2022 with an annual intake of 60 students. The P.G program in Data science was established in the year 2022 with an annual intake of 18 students.
+    <br><br>
+    <strong>BTech CSE (Data Science)</strong> is a 4-year undergraduate level course designed for you to build a distinctive career in analytical and leadership roles in various sectors. The course is new and trending, with a perfect blend of machine learning, big data analytics, and statistics, helping students gain experience in solving problems with real-world data.
+    <br><br>
+    This course also gives importance to areas like big data analytics, fuzzy technologies, and artificial neural networks. It helps students in getting ready with skills to perform decisions that are based on data analysis. Throughout the duration of the programme, the students are taught how to amalgamate business knowledge, tools, and statistics to generate business value in creative ways.
+    <br><br>
+    <strong>Career Prospective for Data Science Students:</strong>
+    <ul class="list-disc list-inside space-y-6 p-8">
+        <li>Data Analyst</li>
+        <li>Data Specialist</li>
+        <li>Data Scientist</li>
+        <li>Data Engineer</li>
+        <li>Data Architect</li>
+        <li>Data Consultant</li>
+    </ul>
+    <br><br>
+    <strong class="m-5">Top 10 Data Science Companies:</strong>
+    <ul class="list-disc list-inside space-y-6 p-8">
+        <li>Accenture</li>
+        <li>Databricks</li>
+        <li>OpenText</li>
+        <li>Splunk</li>
+        <li>Unified</li>
+        <li>Teradata</li>
+        <li>Oracle</li>
+        <li>Sisense</li>
+        <li>NVIDIA</li>
+        <li>Sumo Logic</li>
+    </ul>
+    <br><br>
+    <strong class="m-5">Highlights:</strong>
+    <ul class="list-disc list-inside space-y-6 p-8">
+        <li>Campus Recruitment by ORACLE and other reputed companies.</li>
+        <li>Well Equipped Computer Labs with Latest Technologies.</li>
+        <li>MOU With IIT-Bombay for Spoken Tutorial: To Impart Training on Open Source Technologies for all Engineering Streams.</li>
+        <li>The department encourages Entrepreneur Skill Development among students in Collaboration with ESDA-New Delhi.</li>
+        <li>Internships with Internshala.com.</li>
+        <li>Association with International Professional Bodies: IEEE, CSI, CII, ACM, ISTE, IETE, IAENG, IASA & IEI.</li>
+        <li>Soft Skills & CRT (Campus Recruitment Training) Programs from IInd Year B.Tech Onwards.</li>
+        <li>Training Students & Faculty on Latest Technologies by Workshops & Seminars from Industry People and IIT Faculty.</li>
+        <li>Industrial Visits to students to introduce forthcoming Technologies.</li>
+        <li>Strong ALUMNI Network of PAW [PSCMRCET-Alumni Wing].</li>
+    </ul>
+</p>
+
+<div class="bg-blue-900 text-white text-center p-3" id="about-mca">
+  <p class="font-bold text-2xl">
+    <i class="fas fa-laptop-code mr-2"></i> ABOUT MCA
+  </p>
+</div>
+
+<p class="m-4 text-justify leading-relaxed">
+    <strong>Master of Computer Applications (MCA)</strong> is a two-year professional post-graduate course for candidates wanting to delve deeper into the world of Computer Application development with the help of learning modern programming languages. The programme is a blend of both theoretical and practical knowledge, providing in-depth knowledge of the various computer languages and IT applications.
+    <br><br>
+    The Department has excellent learning facilities which include a Seminar Hall, Department Library, and a dedicated Computer Lab. Faculty members are given various opportunities to attend workshops, short-term courses, seminars, and conferences for updating knowledge, to cope with the continuous changes and challenges in the field of Computer Science and its applications.
+    <br><br>
+    <strong>Why MCA in PSCMRCET?</strong>
+    <ul class="list-disc list-inside space-y-2 p-4">
+        <li>Hands-on Curriculum designed by experts from academia and industry, taught by Quality Faculty Members.</li>
+        <li>More emphasis on the latest programming languages and tools to develop better and faster applications.</li>
+        <li>Enhancing students’ capabilities as per the career requirements and providing necessary placement assistance.</li>
+        <li>Specially organized Workshops, Webinars, and Guest Lectures by Industry experts to provide the latest Industry insights.</li>
+        <li>Professional enhancement Program focusing on aptitude, reasoning, soft skills, and interviewing skills of the student.</li>
+    </ul>
+</p>
+
+<footer class="bg-blue-900 py-6 text-center text-white">
+  <p>
+    &copy; 2025 International Conference on Smart Eco-Systems using AI and Green Computing for Sustainable Development. All rights reserved.
+  </p>
+</footer>
+  </body>
+  </html>

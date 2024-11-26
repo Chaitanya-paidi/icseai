@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICSEAI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+    
+      @keyframes slideShow {
+        0% { opacity: 1; }
+        33% { opacity: 1; }
+        33.33% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+    
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+    
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+    
+      .tab button:hover {
+        background-color: #ddd;
+      }
+    
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+    
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+    
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+      }
+
+      .map-container {
+          height: 100%;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev, .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+      .hover-zoom {
+        display: inline-block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hover-zoom:hover {
+        transform: scale(1.03);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-black text-justify">
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" />
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-blue-900 text-white px-2 py-1 rounded">ICSEAI</span> 2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+          <li class="relative group">
+            <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+              Call for Papers
+              <svg class="ml-1 w-4 h-4 fill-current text-black group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible">
+              <li><a href="callforPapers.html#conf" class="block px-4 py-2 hover:bg-blue-100">About ICSEAI</a></li>
+              <li><a href="callforPapers.html#dates" class="block px-4 py-2 hover:bg-blue-100">Important Dates</a></li>
+              <li><a href="callforPapers.html#scope" class="block px-4 py-2 hover:bg-blue-100">Scope</a></li>
+              <li><a href="callforPapers.html#conf-tracks" class="block px-4 py-2 hover:bg-blue-100">Conference Tracks</a></li>
+            </ul>
+          </li>
+          <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+          <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+          <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+          <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+          <li><a href="specialSessions.html" class="text-blue-400">Special Sessions</a></li>
+          <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-blue-400 focus:outline-none" id="menu-button">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <ul class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden" id="mobile-menu">
+        <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+        <li>
+          <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+            Call for Papers
+            <svg class="ml-1 w-4 h-4 fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li><a href="callforPapers.html#conf" class="text-blue-400">About ICSEAI</a></li>
+            <li><a href="callforPapers.html#dates-m" class="text-blue-400">Important Dates</a></li>
+            <li><a href="callforPapers.html#scope" class="text-blue-400">Scope</a></li>
+            <li><a href="callforPapers.html#conf-tracks" class="text-blue-400">Conference Tracks</a></li>
+          </ul>
+        </li>
+        <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+        <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+        <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+        <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+        <li><a href="specialSessions.html" class="text-blue-400">Special Sessions</a></li>
+        <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+  
+  <header class="h-[950px] md:h-full text-center text-white bg-blue-900 relative">
+    <div class="flex flex-col md:flex-row relative z-10">
+
+      <div class="w-full md:w-[39%] relative overflow-hidden">
+        <div class="slideshow">
+          <div
+            class="slide"
+            style="background-image: url('PSCMR.jpeg'); height: 750px"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('barrage.jpeg'); height: 750px"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('durga.jpeg'); height: 750px"
+          ></div>
+          <div class="slide">
+            <iframe
+              width="100%"
+              height="750px"
+              src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-[61%] md:px-4 py-25">
+        <div class="w-full">
+          <div class="slideshow-container md:hidden">
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 4</div>
+              <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 4</div>
+              <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 4</div>
+              <img src="durga.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">4 / 4</div>
+              <iframe
+                width="100%"
+                height="200px"
+                src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <div style="text-align: center" class="md:hidden">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+              <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="text-2xl font-bold t">
+          <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+          International Conference on <br> <span class="text-[28px]">Smart Eco-Systems using AI and Green Computing for Sustainable Development</span> <br> ICSEAI 2025        </h1>
+        <br />
+        <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+        <h2 class="text-xl font-bold mb-4">Hybrid Mode</h2>
+        <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+        <h3 class="text-lg mb-4">
+          ALL ACCEPTED & PRESENTED papers will be published in <br />
+          <b>SCOPUS indexed SPRINGER</b>
+        </h3>
+        <div class="flex justify-center space-x-4 mb-4">
+          <img src="springer.png" alt="Springer" class="h-20 w-20" />
+          <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
+        </div>
+        <p class="mb-2">Submission is now open: Till December 15, 2024</p>
+        <div class="button-container2"></div>
+        <button
+          class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+        >
+          Submit Your Paper
+        </button>
+      </div>
+      
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+    </script>
+  </header>
+  
+      <div class="mt-1 bg">
+        <marquee behavior="" direction=""
+          >A virtual meeting is available for all registered authors who intend to
+          submit their work but are unable to attend the conference.</marquee
+        >
+      </div>
+  
+      <div class="bg-blue-900 text-white text-center p-3">
+        <p class="font-bold text-2xl">
+          <i class="fas fa-clock mr-2"></i> SPECIAL SESSIONS
+        </p>
+      </div>
+      
+      
+      <div class="p-3 md:p-10 bg-white">
+        <P>ICSEAI-2025 invites eminent academicians, scientists, researchers, industrialists, technocrats, government representatives, social visionaries and experts from all strata of society to work together for more meaningful and professional outcome. The  ICSEAI 2025 team plans to hold workshops/special sessions on various areas of expertise, in any of the tracks based on related theme. <br>
+        The Workshops/Special Sessions will be chaired by experts from different fields. The presentation of the papers will be scheduled on any day of the conference.</P>
+      </div>
+
+      <div class="p-3 bg-blue-900">
+        <section class="text-black">
+            <div class="flex flex-col gap-5 lg:flex-row lg:gap-5" id="conference-tracks">
+              <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+                <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                  Business Intelligence and Analytics
+                </h2>
+                <p class=" mt-2"><b>Chair:</b>
+                  Dr. Y. Ramesh; Aditya Institute of Technology and Management (A), JNTU Kakinada, Andhra Pradesh, India
+                  </p>
+                  <p class="text-left mt-2"><b>Phone:</b>
+                    +919849765747
+                    </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                    rameshyegireddi@gmail.com</p> 
+                <p class=" mt-2"><b>Co-Chair:</b>
+                  K.S.N. Murty; M.R. P.G College(A), Vizianagaram, Andhra University Visakhapatnam, Andhra Pradesh, India. & Vamsi Bandi; Madanapalle Institute of Technology & Science (MITS), Madanapalle, JNTU Anantapuramu, Andhra Pradesh, India & T. Thirupatirao; Lendi Institute of Engineering and Technology(A), Vizianagaram, JNTU Kakinada, Andhra Pradesh, India & Rajendra Kumar Ganiya; Vignan’s Institute of Information Technology(A), Visakhapatnam, JNTU Kakinada, Andhra Pradesh, India & Appla Srinivasu Muttipati; Anil Neerukonda Institute of Technology & Sciences (A), Visakhapatnam Andhra Pradesh, India</p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9849765747, 7989799468, 9491320403, 9618912959, 9390180360, 939311075, 8341645858
+                  </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  rameshyegireddi@gmail.com, snmurtyk@gmail.com, vamsib111@gmail.com, thirupatiraotirlingi@gmail.com, rajendragk@rediffmail.com, srinivasum.csm@anits.edu.in</p> 
+              </div> 
+
+              <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+                <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                  Computational Business Systems
+                </h2>
+                <p class="mt-2"><b>Chair:</b>
+                    Bosubabu Sambana, Avanthi Institute of Engineering and Technology (Autonomous), 
+                    Narsipatnam, JNTU GV University, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                    9640641136
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                    bosukalam@gmail.com
+                </p> 
+                <p class="mt-2"><b>Co-Chair:</b>
+                    Dr. Rahul Jashvantbhai Pandya; Indian Institute of Technology (IIT), Dharwad, Karnataka, India & 
+                    Dr. Priyanka Mishra; Indian Institute of Information Technology Kota, Rajasthan, India & 
+                    Dr. Ghanapriya Singh; National Institute of Technology (NIT) Uttarakhand, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                    7428335049, 9549650567, 9068289740
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                    priyanka.cse@iiitkota.ac.in, 2021krcp1001@iiitkota.ac.in, rpandya@iitdh.ac.in, ghanapriya@nituk.ac.in
+                </p> 
+            </div> 
+             
+          </div>
+
+            <div class="flex flex-col gap-5 lg:flex-row lg:gap-5" id="conference-tracks">
+              <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+                <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                  Information Systems
+                </h2>
+                <p class="mt-2"><b>Chair:</b>
+                  Dr. C.P.V.N.J. Mohan Rao; Avanthi Institute of Engineering & Technology, Makavarapalem, Anakapalle, JNTU GV Vizianagaram, AP, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9849147304
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  mohanrao_c@yahoo.com
+                </p> 
+                <p class="mt-2"><b>Co-Chair:</b>
+                  Dr. Ennam Govinda, Dr. U. Nanaj, Dr. T. Srinivasa Rao, Dr. R. Prasad Rao, Dr. Challa Suresh, Dr. Abburi Srinivasa Rao; 
+                  Avanthi Institute of Engineering & Technology, Makavarapalem, Anakapalle, JNTU GV Vizianagaram, AP, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9640189549
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  ennamgovinda19@gmail.com, srinivasarao_tegala@yahoo.co.in, drchallasuresh@gmail.com, rayavarapu.prasadrao09<br>@gmail.com, asr161969@gmail.com
+                </p> 
+              </div>
+            
+              <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+                <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                  Computational Intelligence and Applications
+                </h2>
+                <p class="mt-2"><b>Chair:</b>
+                  Mr. K. Krishna Reddy; Mother Theresa Institute of Engineering and Technology, Palamaner, JNTUA Anantapur, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9391810695
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  krishnareddy206@mtieat.org
+                </p> 
+                <p class="mt-2"><b>Co-Chair:</b>
+                  Dr. M. Anka Rao; JNTU College of Engineering Anantapur, JNTUA Anantapur, Andhra Pradesh, India. & 
+                  Dr. P.C. Prabhu Kumar; Mother Theresa Institute of Engineering and Technology, Palamaner & 
+                  Dr. S. Murali Mohan; Mother Theresa Institute of Engineering and Technology, Palamaner, JNTUA Anantapur, Andhra Pradesh, India & 
+                  Dr. C. Geetha; Mother Theresa Institute of Engineering and Technology, Palamaner, JNTUA Anantapur, Andhra Pradesh, India & 
+                  Mr. P. Chandrasekhar; Mother Theresa Institute of Engineering and Technology, Palamaner, JNTUA Anantapur, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9491694858
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  ankaraomogili@gmail.com, drprabhu.cse@mtieat.org, muralimohanieee@gmail.com, geetharai202@gmail.com, pcsmtech2023@gmail.com
+                </p> 
+              </div>
+              
+             
+            </div>
+
+            <div class="flex flex-col gap-5 lg:flex-row lg:gap-5" id="conference-tracks">
+              <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+                <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                  CRM and ERP Systems using Software Project Management
+                </h2>
+                <p class="mt-2"><b>Chair:</b>
+                  Dr. D. Jaya Kumari; Sri Vasavi Engineering College (Autonomous), Tadepalligudem, JNTU Kakinada, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9642022170
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  hod_cse@srivasaviengg.ac.in
+                </p> 
+                <p class="mt-2"><b>Co-Chair:</b>
+                  Mr. K. Praveen Kumar; Sri Vasavi Engineering College (Autonomous), Tadepalligudem, JNTU Kakinada, Andhra Pradesh, India. & 
+                  Dr. D. Sudha Rani; Sri Vasavi Engineering College (Autonomous), Tadepalligudem, JNTU Kakinada, Andhra Pradesh, India & 
+                  Mr. Mamillapalli Chilaka Rao; Sagi Rama Krishnam Raju (SRKR) Engineering College (Autonomous), Bhimavaram, JNTU Kakinada, Andhra Pradesh, India & 
+                  Mrs. N. Akhila; Aditya Engineering College (Autonomous), Surampalem, JNTU Kakinada, Andhra Pradesh, India & 
+                  Mrs. M. Durgadevi; Ch.S.D.St.Theresa's College for Women (A), Eluru, Adikavi Nannaya University, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  7702215245
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  praveenkumar.cse<br>@srivasaviengg.ac.in, hod_eee@srivasaviengg.ac.in, chilakarao@gmail.com, akhila.nalla@aec.edu.in, m.devi.mca.06@gmail.com
+                </p> 
+              </div>
+
+              <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+                <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                  Artificial Intelligence in Business, e-Business , e-Commerce, e-Governance
+                </h2>
+                <p class="mt-2"><b>Chair:</b>
+                  Dr. B.S.N. Raju, Professor & Principal, School of Management Studies, M. R. PG College, Vizianagaram, Andhra University Visakhapatnam, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9866461078
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  bsnraju333@gmail.com
+                </p> 
+                <p class="mt-2"><b>Co-Chair:</b>
+                  K.S.N. Murty, Assistant Professor, School of Management Studies, M. R. PG College, Vizianagaram, Andhra University Visakhapatnam, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9491320403
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  snmurtyk@gmail.com
+                </p> 
+              </div>
+
+            </div>
+
+            <div class="flex flex-col gap-5 lg:flex-row lg:gap-5" id="conference-tracks">
+              <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+                <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                  Applications of Data Science, Data Mining,Data Privacy,Data Visualization, and Security
+                </h2>
+                <p class="mt-2"><b>Chair:</b>
+                  Dr. T. Murali Mohan; AITAM Institute of Engineering and Technology (SIET), Narsapur, JNTU Kakinada, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9885602412
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  drtmm512@lgmail.com
+                </p> 
+                <p class="mt-2"><b>Co-Chair:</b>
+                  A. Krishna Mohan; UCE Kakinada, JNTU Kakinada, Andhra Pradesh, India & 
+                  P. Vamsi Krishna Raja; Pydah Institute of Engineering and Technology(A), Kakinada & 
+                  A.S.N. Chakravarthy; UCEV Vizianagaram, JNTU Kakinada, Andhra Pradesh, India & 
+                  K. Narasimharaju; GVP College of Engineering (A), Visakhapatnam, Andhra University, Andhra Pradesh, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9885774322, 6300812123, 9885602412, 9618719229, 9885871466, 9381395778, 9100728999
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  krishna.ankala@gmail.com, drpvkraja@swarnandhra.ac.in, asnchakravarthy@yahoo.com, rj.vizagg@gmail.com, Sriram310@gmail.com
+                </p> 
+              </div>
+              <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+                <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                  Quantum Computing in Data Science 
+                </h2>
+                <p class="mt-2"><b>Chair:</b>
+                  Dr. A. Rama Rao, Lendi Institute of Engineering and Technology (A), Vizianagaram, JNTU Kakinada, AP, India.
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9052740752
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  ramaraoadimalla@gmail.com
+                </p> 
+                <p class="mt-2"><b>Co-Chair:</b>
+                  Dr. K. V. Kadambari, National Institute of Technology (NIT) Warangal, Telangana, India & 
+                  Dr. P. Aruna Kumari, JNTU-GV Vizianagaram, Andhra Pradesh, India & 
+                  Mr. P. J. V. G. Prakasa Rao & Mr. N. P. Patnaik M, Lendi Institute of Engineering and Technology (A), Vizianagaram, JNTU Kakinada, AP, India & 
+                  Dr. Mohan Mahanty, Vignan Institute of Information and Technology (A), Visakhapatnam, India
+                </p>
+                <p class="text-left mt-2"><b>Phone:</b>
+                  9705460461, 9440520606, 7382595587, 8328288485
+                </p>
+                <p class="text-left mt-2"><b>e-Mail:</b>
+                  kadambari@nitw.ac.in, prakash.pyla@gmail.com, nppatnaikm@gmail.com
+                </p> 
+              </div>
+            </div>
+
+          <div class="flex flex-col gap-5 lg:flex-row lg:gap-5" id="conference-tracks">
+            <div class="hover-zoom bg-white p-6 rounded-lg shadow w-full lg:w-1/2 mt-5">
+              <h2 class="text-2xl font-bold mb-2 text-left text-blue-900">
+                Blockchain for Data Integrity and Security
+              </h2>
+              <p class="mt-2"><b>Chair:</b>
+                Dr. R. Sivaranjani, Raghu Engineering College(A), Visakhapatnam, JNTU GV Vizianagaram, Andhra Pradesh, India
+              </p>
+              <p class="text-left mt-2"><b>Phone:</b>
+                9642022170
+              </p>
+              <p class="text-left mt-2"><b>e-Mail:</b>
+                sivaranjani.reddi@<br>raghuenggcollege.in
+              </p> 
+              <p class="mt-2"><b>Co-Chair:</b>
+                Ch. Chakradhara Rao; Raghu Engineering College(A), Visakhapatnam, Andhra Pradesh, India & 
+                Ms. P.S.S. Geethika; Raghu Engineering College(A), Visakhapatnam, Andhra Pradesh, India & 
+                Mr. Ch. Seshadri Rao; Raghu Engineering College(A), Visakhapatnam, Andhra Pradesh, India & 
+                Mrs. G. Gayathri; Anil Neerukonda Institute of Technology and Sciences (A), Andhra Pradesh, India & 
+                Ch. Madhu; Software Developer III, BPMLinks LLC, Atlanta, GA, USA
+              </p>
+              <p class="text-left mt-2"><b>Phone:</b>
+                7702215245
+              </p>
+              <p class="text-left mt-2"><b>e-Mail:</b>
+                h@raghuenggcollege.in, saigeethika.p<br>@raghuenggcollege.in, seshadrirao.chinta<br>@raghuenggcollege.in, ggayatri.cse@anits.edu.in, Madhu.ncc@gmail.com
+              </p> 
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <footer class="bg-blue-900 py-6 text-center text-white">
+      <p>
+        &copy; 2025 International Conference on Smart Eco-Systems using AI and Green Computing for Sustainable Development All rights reserved.
+      </p>
+    </footer>
+</body>
+</html>

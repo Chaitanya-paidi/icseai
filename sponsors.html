@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICSEAI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+    
+      @keyframes slideShow {
+        0% { opacity: 1; }
+        33% { opacity: 1; }
+        33.33% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+    
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+    
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+    
+      .tab button:hover {
+        background-color: #ddd;
+      }
+    
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+    
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+    
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+      }
+
+      .map-container {
+          height: 100%;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev, .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" />
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-blue-900 text-white px-2 py-1 rounded">ICSEAI</span> 2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+          <li class="relative group">
+            <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+              Call for Papers
+              <svg class="ml-1 w-4 h-4 fill-current text-black group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible">
+              <li><a href="callforPapers.html#conf" class="block px-4 py-2 hover:bg-blue-100">About ICSEAI</a></li>
+              <li><a href="callforPapers.html#dates" class="block px-4 py-2 hover:bg-blue-100">Important Dates</a></li>
+              <li><a href="callforPapers.html#scope" class="block px-4 py-2 hover:bg-blue-100">Scope</a></li>
+              <li><a href="callforPapers.html#conf-tracks" class="block px-4 py-2 hover:bg-blue-100">Conference Tracks</a></li>
+            </ul>
+          </li>
+          <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+          <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+          <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+          <li><a href="sponsors.html" class="text-blue-400">Sponsors</a></li>
+          <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+          <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-blue-400 focus:outline-none" id="menu-button">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <ul class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden" id="mobile-menu">
+        <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+        <li>
+          <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+            Call for Papers
+            <svg class="ml-1 w-4 h-4 fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li><a href="callforPapers.html#conf" class="text-blue-400">About ICSEAI</a></li>
+            <li><a href="callforPapers.html#dates-m" class="text-blue-400">Important Dates</a></li>
+            <li><a href="callforPapers.html#scope" class="text-blue-400">Scope</a></li>
+            <li><a href="callforPapers.html#conf-tracks" class="text-blue-400">Conference Tracks</a></li>
+          </ul>
+        </li>
+        <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+        <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+        <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+        <li><a href="sponsors.html" class="text-blue-400">Sponsors</a></li>
+        <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+        <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+
+    <header class="h-[950px] md:h-full text-center text-white bg-blue-900 relative">
+      <div class="flex flex-col md:flex-row relative z-10">
+
+        <div class="w-full md:w-[39%] relative overflow-hidden">
+          <div class="slideshow">
+            <div
+              class="slide"
+              style="background-image: url('PSCMR.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('barrage.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('durga.jpeg'); height: 750px"
+            ></div>
+            <div class="slide">
+              <iframe
+                width="100%"
+                height="750px"
+                src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-[61%] md:px-4 py-25">
+          <div class="w-full">
+            <div class="slideshow-container md:hidden">
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="durga.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <iframe
+                  width="100%"
+                  height="200px"
+                  src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+
+              <div style="text-align: center" class="md:hidden">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="text-2xl font-bold t">
+            <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+            International Conference on <br> <span class="text-[28px]">Smart Eco-Systems using AI and Green Computing for Sustainable Development</span> <br> ICSEAI 2025          </h1>
+          <br />
+          <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+          <h2 class="text-xl font-bold mb-4">Hybrid Mode</h2>
+          <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+          <h3 class="text-lg mb-4">
+            ALL ACCEPTED & PRESENTED papers will be published in <br />
+            <b>SCOPUS indexed SPRINGER</b>
+          </h3>
+          <div class="flex justify-center space-x-4 mb-4">
+            <img src="springer.png" alt="Springer" class="h-20 w-20" />
+            <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
+          </div>
+          <p class="mb-2">Submission is now open: Till December 15, 2024</p>
+          <div class="button-container2"></div>
+          <button
+            class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+          >
+            Submit Your Paper
+          </button>
+        </div>
+        
+      </div>
+
+      <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+      </script>
+    </header>
+
+    <div class="mt-1 bg">
+      <marquee behavior="" direction=""
+        >A virtual meeting is available for all registered authors who intend to
+        submit their work but are unable to attend the conference.</marquee
+      >
+    </div>
+
+    <div class="bg-blue-900 text-white text-center p-3">
+      <p class="font-bold text-2xl">
+        <i class="fas fa-handshake mr-2"></i> SPONSORS
+      </p>
+    </div>
+    
+
+    <div class="bg-gray-100 p-5">
+      <div>
+        <p class="font-bold text-center text-2xl underline-blue p-3">About Our Sponsors</p>
+        <p class="mb-3">The International Conference on Smart Eco-Systems using AI and Green Computing for Sustainable Development (ICSEAI) 2025 is honored to be supported by a distinguished group of sponsors who are leaders in the realms of data science, technology, and business systems. Their contributions are vital in enhancing the quality and impact of our conference. We are grateful for their support and commitment to advancing innovation and excellence in these fields.</p>
+      </div> <br>
+
+        <p class="text-center">ICSEAI 2025 is supported both technically and financially by the following sponsors and promoters: <br> <br> As a sponsor of the ICSEAI 2025 you will have numerous opportunities to
+          reach a variety of organizations. <br />
+        </p> <br> <br>
+        
+
+        <div class="md:flex justify-between">
+          
+          <div>
+            <a href="http://www.bluminiic.com/">
+            <img class="h-[50px]" src="blumin.jpg" alt=""  /></a><br>
+             <!-- <p class="ml-[150px] font-bold">BLUMIN</p> -->
+          </div>
+          <div class="">
+            <a href="https://softhouz.com/">
+            <img class="h-[50px] w-40" src="softhouz.jpg" alt="" /></a>
+            <!-- <p class="font-bold">Bolu Abant Izzet Bayasal University</p> -->
+          </div>
+          <div class="">
+            <a href="https://pavanempowersolutions.com/">
+            <img class="h-[50px] w-40" src="pavan.jpg" alt="" /></a>
+            <!-- <p class="font-bold">University of Virgin Islands</p> -->
+          </div>
+          <div class="">
+            <a href="sponsors.html">
+            <img class="h-[50px] w-40" src="kube.jpg" alt="" /></a>
+            <!-- <p class="font-bold">University of Virgin Islands</p> -->
+          </div>
+          <div class="">
+            <a href="https://media3training.com">
+            <img class="h-[50px] w-40" src="media.jpg" alt="" /></a>
+            <!-- <p class="font-bold">University of Virgin Islands</p> -->
+          </div>
+          <div class="">
+            <a href="https://www.metrolabsservices.com/">
+            <img class="h-[50px] w-40" src="metro-labs.jpg" alt="" /></a>
+            <!-- <p class="font-bold">University of Virgin Islands</p> -->
+          </div>
+          <div class="">
+            <a href="https://brainovision.org/">
+            <img class="h-[50px] w-40" src="brain.jpg" alt="" /></a>
+            <!-- <p class="font-bold">University of Virgin Islands</p> -->
+          </div>
+        </div>
+      <p>
+        
+        <br />
+        This is a very important event to showcase not only your interest and
+        commitment to defending against Internet of Things, but your expertise
+        as well. Additionally, you will have the capability to collaborate with
+        vendors on finding out the interests and challenges of our attendees in
+        order to provide them with IoT solutions.
+        <br /><br />
+
+        We thank you in advance for your commitment and support and look forward
+        to seeing you there!
+      </p>
+
+      <div class="mt-7">
+        <p class="text-2xl font-bold text-blue-900 text-center">What We Offer</p>
+        <p class="text-center">In addition to the ICSEAI 2025 Conference, we provide numerous opportunities for you and your organization to connect with student affairs professionals. Below are three of our most popular sponsorship packages:</p> <br>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <!-- Bronze Level Sponsor Card -->
+          <div class="relative bg-white shadow-lg rounded-lg p-5" 
+              style="background-color: rgb(255, 187, 0);" >
+            <div class="absolute inset-0 bg-black opacity-50 rounded-lg"></div>
+            <div class="relative z-10">
+              <h3 class="text-2xl font-semibold text-center text-white mb-4 underline-blue">Bronze Level Sponsor - $750</h3>
+              <ul class="list-disc list-inside text-white space-y-4">
+                <li>Company name and hyperlink recognizing on conference website.</li>
+                <li>Recognition as a bronze conference sponsor in program guide.</li>
+                <li>Sign recognition at the event.</li>
+                <li>FREE Registration for Three Attendees.</li>
+                <li>Company webpage and banner added in Book of Abstract Proceedings.</li>
+                <li>Given chance to company stall at program.</li>
+                <li>Company/Institution participation at technical event.</li>
+              </ul>
+            </div>
+          </div>
+        
+          <!-- Silver Level Sponsor Card -->
+          <div class="relative bg-white shadow-lg rounded-lg p-5" 
+              style="background-color: silver;">
+            <div class="absolute inset-0 bg-black opacity-50 rounded-lg"></div>
+            <div class="relative z-10">
+              <h3 class="text-2xl font-semibold text-center text-white mb-4 underline-blue">Silver Level Sponsor - $1500</h3>
+              <ul class="list-disc list-inside text-white space-y-4">
+                <li>Company name, logo, and hyperlink recognizing on conference website.</li>
+                <li>Recognition as a silver conference sponsor in program guide.</li>
+                <li>Sign recognition at the event.</li>
+                <li>FREE Registration for Six Attendees.</li>
+                <li>Exhibit table opportunity (table fee included).</li>
+                <li>1/2 page and program guide.</li>
+                <li>Verbal recognition at the event.</li>
+                <li>Company webpage and banner added in Book of Abstract Proceedings.</li>
+                <li>Given chance to company stall at program.</li>
+                <li>Company/Institution participation at technical event.</li>
+              </ul>
+            </div>
+          </div>
+        
+          <!-- Gold Level Sponsor Card -->
+          <div class="relative bg-white shadow-lg rounded-lg p-5" 
+              style="background-color: gold;">
+            <div class="absolute inset-0 bg-black opacity-50 rounded-lg"></div>
+            <div class="relative z-10">
+              <h3 class="text-2xl font-semibold text-center text-white mb-4 underline-blue">Gold Level Sponsor - $2500</h3>
+              <ul class="list-disc list-inside text-white space-y-4">
+                <li>Company name, logo, and hyperlink recognizing on conference website.</li>
+                <li>Recognition as a gold conference sponsor in program guide.</li>
+                <li>Sign recognition at the event.</li>
+                <li>FREE Registration for Eight Attendees.</li>
+                <li>Exhibit table booth opportunity (booth fee included).</li>
+                <li>Full page ad in program guide.</li>
+                <li>Verbal recognition at the event.</li>
+                <li>Sponsorship of Lunch at event.</li>
+                <li>Eligibility to sponsor a major speaker at the event or speak as a featured speaker.</li>
+                <li>Company webpage and banner added in Book of Abstract Proceedings.</li>
+                <li>Given chance to company stall at program.</li>
+                <li>Company/Institution participation at technical event.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+
+  </div>
+
+  </body>
+  <footer class="bg-blue-900 py-6 text-center text-white">
+    <p>
+      &copy; 2025 International Conference on Smart Eco-Systems using AI and Green Computing for Sustainable Development. All rights reserved.
+    </p>
+  </footer>
+</html>
